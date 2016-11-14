@@ -3,18 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-
-
 // lambda / action usages:
 // http://www.blockypixel.com/2012/09/c-in-unity3d-dynamic-methods-with-lambda-expressions/
-//
 
 // dictionary usages:
 //http://csharp.net-informations.com/collection/dictionary.htm
 
 // Moby Dick in public domain, here is the data:
-// useful for dummy data object in BookData() test method
+// useful for test data object in BookData() test method
 // https://americanliterature.com/author/herman-melville/book/moby-dick-or-the-whale/chapter-1-loomings
+
+// we will load the moby dick test data perhaps similarly to this:
+// https://forum.unity3d.com/threads/read-from-textasset-line-by-line.327422/
 
 
 public class BookData
@@ -31,8 +31,6 @@ public class BookData
 		string mobydickpage1 = "";
 
 		this.pageDatas.Add (0, mobydickpage1);
-
-
 
 	}
 
