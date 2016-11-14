@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{51967696-A1A7-CC40-DA61-6ECA2524A0A8}") = "Holobooks", "Assembly-CSharp.csproj", "{AD384121-FD7F-4C7E-4F90-FC0EBFF1BFBC}"
+EndProject
+Project("{51967696-A1A7-CC40-DA61-6ECA2524A0A8}") = "Holobooks", "Assembly-CSharp-Editor.csproj", "{08EB270B-6A51-D49F-D847-07426AFD4347}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD384121-FD7F-4C7E-4F90-FC0EBFF1BFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD384121-FD7F-4C7E-4F90-FC0EBFF1BFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD384121-FD7F-4C7E-4F90-FC0EBFF1BFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD384121-FD7F-4C7E-4F90-FC0EBFF1BFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08EB270B-6A51-D49F-D847-07426AFD4347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08EB270B-6A51-D49F-D847-07426AFD4347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08EB270B-6A51-D49F-D847-07426AFD4347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08EB270B-6A51-D49F-D847-07426AFD4347}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
