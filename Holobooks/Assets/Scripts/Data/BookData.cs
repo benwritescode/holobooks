@@ -21,7 +21,7 @@ public class BookData
 {
 	
 	public BookReference reference;
-	private Dictionary<int, PageData> pageDatas = new Dictionary<int, PageData> ();
+	private Dictionary<int, string> pageDatas = new Dictionary<int, string> ();
 
 
 	// test book data
@@ -46,7 +46,7 @@ public class BookData
 	// Takes in a pageNumber, and a callback. The callback's one and only argument is a PageData.
 	// When get page is finished, it will call the lambda, "Action(PageData)" to return the requested page data to the caller.
 
-	public void GetPageAndReturnWithCallback (int pageNumber, Action<PageData> action)
+	public void GetPageAndReturnWithCallback (int pageNumber, Action<string> action)
 	{
 		if (pageDatas.ContainsKey (pageNumber)) {
 			action (pageDatas [pageNumber]);
