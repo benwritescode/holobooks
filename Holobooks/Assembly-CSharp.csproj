@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Data\BookData.cs" />
      <Compile Include="Assets\Scripts\Data\BookReference.cs" />
      <Compile Include="Assets\Scripts\Data\PageData.cs" />
+     <Compile Include="Assets\Scripts\Utils.cs" />
      <None Include="Assets\Scripts\API\JSON\readme.txt" />
      <None Include="Assets\Text\MobyDickPage0.txt" />
  <Reference Include="UnityEngine.UI">

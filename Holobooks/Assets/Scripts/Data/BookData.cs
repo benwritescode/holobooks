@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+
+
 // lambda / action usages:
 // http://www.blockypixel.com/2012/09/c-in-unity3d-dynamic-methods-with-lambda-expressions/
 
@@ -21,14 +23,14 @@ public class BookData
 {
 	
 	public BookReference reference;
-	private Dictionary<int, string> pageDatas = new Dictionary<int, string> ();
+	private Dictionary<int, PageData> pageDatas = new Dictionary<int, PageData> ();
 
 
 	// test book data
 	public BookData ()
 	{
 		this.reference = new BookReference ("Mobydick");
-		string mobydickpage1 = "";
+		PageData mobydickpage1 = new PageData ("");
 
 		this.pageDatas.Add (0, mobydickpage1);
 
@@ -46,7 +48,7 @@ public class BookData
 	// Takes in a pageNumber, and a callback. The callback's one and only argument is a PageData.
 	// When get page is finished, it will call the lambda, "Action(PageData)" to return the requested page data to the caller.
 
-	public void GetPageAndReturnWithCallback (int pageNumber, Action<string> action)
+	public void GetPageAndReturnWithCallback (int pageNumber, Action<PageData> action)
 	{
 		if (pageDatas.ContainsKey (pageNumber)) {
 			action (pageDatas [pageNumber]);
