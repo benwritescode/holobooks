@@ -119,6 +119,47 @@ Transform:
   - {fileID: 769272142}
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &175410075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 175410076}
+  - 114: {fileID: 175410077}
+  m_Layer: 0
+  m_Name: TextDisplay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &175410076
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175410075}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.479, y: 0, z: -0.511}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 845485451}
+  m_Father: {fileID: 820176210}
+  m_RootOrder: 0
+--- !u!114 &175410077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 175410075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4187a28d1646a48d490b5b4e869e6c59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441161558
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +223,86 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!1001 &489813098
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 175410076}
+    m_Modifications:
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 45.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013197629084, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000011229746422, guid: dd2410cb256234292b8429952772d5c5,
+        type: 2}
+      propertyPath: m_Text
+      value: "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ\u2013\nLength=26*2,
+        leave 1 space for a dash\n#lines = 3 + 24 = 27.\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000011229746422, guid: dd2410cb256234292b8429952772d5c5,
+        type: 2}
+      propertyPath: m_CharacterSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 102000011229746422, guid: dd2410cb256234292b8429952772d5c5,
+        type: 2}
+      propertyPath: m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 05233899792b144349c70eeb4d1fd03c,
+        type: 3}
+    - target: {fileID: 102000011229746422, guid: dd2410cb256234292b8429952772d5c5,
+        type: 2}
+      propertyPath: m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: dd2410cb256234292b8429952772d5c5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &769272137
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,7 +402,7 @@ GameObject:
   - 65: {fileID: 820176208}
   - 23: {fileID: 820176207}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Book
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -343,8 +464,94 @@ Transform:
   m_GameObject: {fileID: 820176206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -8.06}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 175410076}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1 &845485450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1000013197629084, guid: dd2410cb256234292b8429952772d5c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 489813098}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 845485451}
+  - 23: {fileID: 845485453}
+  - 102: {fileID: 845485452}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &845485451
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4000012776575780, guid: dd2410cb256234292b8429952772d5c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 489813098}
+  m_GameObject: {fileID: 845485450}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 45.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 175410076}
+  m_RootOrder: 0
+--- !u!102 &845485452
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 102000011229746422, guid: dd2410cb256234292b8429952772d5c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 489813098}
+  m_GameObject: {fileID: 845485450}
+  m_Text: "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ\u2013\nLength=26*2,
+    leave 1 space for a dash\n#lines = 3 + 24 = 27.\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26\n27\n28\n29\n"
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 0
+  m_Alignment: 0
+  m_TabSize: 4
+  m_FontSize: 30
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: 05233899792b144349c70eeb4d1fd03c, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
+--- !u!23 &845485453
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 23000011499856736, guid: dd2410cb256234292b8429952772d5c5,
+    type: 2}
+  m_PrefabInternal: {fileID: 489813098}
+  m_GameObject: {fileID: 845485450}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 05233899792b144349c70eeb4d1fd03c, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedWireframeHidden: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
