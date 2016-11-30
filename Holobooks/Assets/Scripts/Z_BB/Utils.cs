@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Diagnostics;
+
 
 public static class Utils{
 
@@ -43,5 +45,29 @@ public static class Utils{
 		list[index2] = temp;
 	}
 
+	public static void applyMaterial(GameObject gameObj, String filename)
+	{
+		Material mat = Resources.Load(filename, typeof(Material)) as Material;
+		Renderer rend = gameObj.GetComponent<Renderer>();
+		if (rend != null){
+			rend.material = mat;
+		}
+
+	}
+	public static void runScript(String scriptPath, String args){
+
+		ProcessStartInfo startInfo = new ProcessStartInfo()
+		{
+			FileName = scriptPath,
+			Arguments = args,
+		};
+		Process proc = new Process()
+		{
+			StartInfo = startInfo,
+		};
+
+		proc.Start();
+
+	}
 
 }
