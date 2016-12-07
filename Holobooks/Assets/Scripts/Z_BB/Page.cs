@@ -2,11 +2,15 @@
 using System.Collections;
 
 public class Page : MonoBehaviour {
-
+	
+	public void changePage(int number){
+		
+		Utils.applyMaterial(this, number.ToString());
+	}
 	// Use this for initialization
 	void Start () {
-
-		Utils.applyMaterial(gameObject, "page-5");
+//		changePage(1);
+//		Utils.applyMaterial(gameObject, "page-5");
 	}
 	
 	// Update is called once per frame

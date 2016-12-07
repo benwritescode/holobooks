@@ -45,8 +45,9 @@ public static class Utils{
 		list[index2] = temp;
 	}
 
-	public static void applyMaterial(GameObject gameObj, String filename)
+	public static void applyMaterial(Page gameObj, String filename)
 	{
+//		UnityEngine.Debug.Log(filename);
 		Material mat = Resources.Load(filename, typeof(Material)) as Material;
 		Renderer rend = gameObj.GetComponent<Renderer>();
 		if (rend != null){
