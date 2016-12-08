@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\API\OAuth.cs" />
      <Compile Include="Assets\Scripts\API\WebRequest.cs" />
      <Compile Include="Assets\Scripts\Behaviors\BookObjectBehavior.cs" />
+     <Compile Include="Assets\Scripts\Behaviors\EnvironmentSwapBehavior.cs" />
      <Compile Include="Assets\Scripts\Behaviors\TextDisplayBehavior.cs" />
      <Compile Include="Assets\Scripts\Data\BookData.cs" />
      <Compile Include="Assets\Scripts\Data\BookReference.cs" />
