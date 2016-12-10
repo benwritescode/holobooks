@@ -8,9 +8,9 @@ namespace Holobook.DataAPI
     public class DataAPI
     {
         public const string url = "http[s]://babel.hathitrust.org/cgi/htd/";
-        public string consumer_key {get: private set:}
-	    public string consumer_secret {get: private set:}
-	    public string signature {get: private set:}
+        public string consumer_key {get; private set;}
+	    public string consumer_secret {get; private set;}
+	    public string signature {get; private set;}
 
         // public string timestamp {get: private set:}
 	    // public string nonce {get: private set:}
@@ -18,7 +18,11 @@ namespace Holobook.DataAPI
 	    // public string token {get: private set:}
 	    // public string token_secret {get: private set:}
 
-        public Hathi_Ouath(string consumer_key, string consumer_secret, string signature) : this(consumer_key, consumer_secret, signature) { }
+        public DataAPI(string consumer_key, string consumer_secret, string signature)  {
+            this.consumer_key = consumer_key;
+            this.consumer_secret = consumer_secret;
+            this.signature = signature;
+        }
 
  // REPLACE
         private void OnRequestDone(WebRequest request)
@@ -32,16 +36,16 @@ namespace Holobook.DataAPI
 	    }
 
 // aggregate
-        public void getAggregate(string docID) {
+        public void getAggregate(string docID, MonoBehaviour mono) {
             string _url = url + "aggregate/" + docID + "?v=2"
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 // structure
-        public void getStructure(string docID, string format = null) {
+        public void getStructure(string docID, string format = null, MonoBehaviour mono) {
             string _url = "";
             if (format == null) {
                 _url = url + "structure/" + docID + "?format=xml&v=2";
@@ -50,23 +54,23 @@ namespace Holobook.DataAPI
                 _url = url + "structure/" + docID + "?format=" + format + "&v=2";
             }
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 // volume
-        public void getVolume(string docID) {
+        public void getVolume(string docID, MonoBehaviour mono) {
             string _url = url + "volume/" + docID + "/" + "format=ebm&v=2";
 
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 // volume/type
-        public void makeVolumeRequest(string resource, string docID, string seq = null, string format = null) {
+        public void makeVolumeRequest(string resource, string docID, string seq = null, string format = null, MonoBehaviour mono) {
             string _url = url + "volume/";
 
             if(resource == "meta") {
@@ -96,29 +100,29 @@ namespace Holobook.DataAPI
             }
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 // volume/meta
-        public void getVolumeMeta(string docID, string format = null) {
-            makeVolumeRequest("meta", docID, null, format);
+        public void getVolumeMeta(string docID, string format = null, MonoBehaviour mono) {
+            makeVolumeRequest("meta", docID, null, format, mono);
         }
 // volume/pagemeta
-        public void getPageMeta(string docID, string seq, string format = null) {
-            makeVolumeRequest("pagemeta", docID, seq, format);
+        public void getPageMeta(string docID, string seq, string format = null, MonoBehaviour mono) {
+            makeVolumeRequest("pagemeta", docID, seq, format, mono);
         }
 // volume/pageocr
-        public void getPageOCR(string docID, string seq) {
-            makeVolumeRequest("pageocr",docID,seq);
+        public void getPageOCR(string docID, string seq, MonoBehaviour mono) {
+            makeVolumeRequest("pageocr",docID,seq, null, mono);
         }
 // volume/pagecoordocr
         public void getPageCoordOCR(string docID, string seq) {
-            makeVolumeRequest("pagecoordocr",docID,seq);
+            makeVolumeRequest("pagecoordocr",docID,seq, null, mono);
         }
 // volume/pageimage
-        public void getPageImage(string docID, string seq, string format = null, string width = null, string height = null, string res = null, string size = null, string watermark = null) {
+        public void getPageImage(string docID, string seq, string format = null, string width = null, string height = null, string res = null, string size = null, string watermark = null, MonoBehaviour mono) {
             string _url = url + "volume/"
             
             if(width==null && height==null) {
@@ -238,14 +242,14 @@ namespace Holobook.DataAPI
             }
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
 
         }
 // /article
-        public void getArticle(string docID, string format = null) {
+        public void getArticle(string docID, string format = null, MonoBehaviour mono) {
             string _url = url + "article/";
 
             if (format == null) {
@@ -256,13 +260,13 @@ namespace Holobook.DataAPI
             }
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 
-        public void getArticleAlt(string docID, string seq = null) {
+        public void getArticleAlt(string docID, string seq = null, MonoBehaviour mono) {
             string _url = url + "article/alternate/";
 //can seq be null?
             if (seq == null) {
@@ -273,14 +277,14 @@ namespace Holobook.DataAPI
             }
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 
 // article/assets/
-        public void getArticleAssets(string docID, string resource, string seq = null) {
+        public void getArticleAssets(string docID, string resource, string seq = null, MonoBehaviour mono) {
             string _url = url + "article/assets/";
 
             if(resource == "embedded") {
@@ -303,29 +307,29 @@ namespace Holobook.DataAPI
 
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
         }
 
 // article/assets/embedded
-        public void getAssetsEmbedded(string docID, string seq = null) {
-            getArticleAssets(docID, "embedded", seq);
+        public void getAssetsEmbedded(string docID, string seq = null, MonoBehaviour mono) {
+            getArticleAssets(docID, "embedded", seq, mono);
         }
 
 // article/assets/supplementary
-        public void getAssetsSupplementary(string docID, string seq = null) {
-            getArticleAssets(docID, "supplementary", seq);
+        public void getAssetsSupplementary(string docID, string seq = null, MonoBehaviour mono) {
+            getArticleAssets(docID, "supplementary", seq, mono);
         }
 
 // should return type of resource
-        public void getMetaResource(string docID) {
+        public void getMetaResource(string docID, MonoBehaviour mono) {
             _url = url + "type/" + docID;
 
             System.Console.WriteLine(_url);
             // REPLACE
-            WebRequest.Request(_url, 3.5f, this, (WebRequest request) =>
+            WebRequest.Request(_url, 3.5f, mono, (WebRequest request) =>
                 {
                     OnRequestDone(request);
                 });
