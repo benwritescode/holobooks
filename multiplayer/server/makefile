@@ -5,12 +5,12 @@
 # type make to compile
 # type make run to run the server.
 
+run: server
+	mono server.exe
 
 server: server.cs
 	mcs server.cs
 
-run: server
-	mono server.exe
 
 # for testing Mono installation.
 test: helloworld.exe
