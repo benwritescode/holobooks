@@ -22,7 +22,7 @@ namespace OAuth
     using System.Collections.Generic;
     using System.Security.Cryptography;
 
-    using CropperPlugins.Utils;
+//    using CropperPlugins.Utils;
 
     /// <summary>
     ///   A class to manage OAuth interactions.  This works with
@@ -551,7 +551,7 @@ namespace OAuth
             Sign(uri, method);
 
             var erp = EncodeRequestParameters(this._params);
-            Tracing.Trace("erp = {0}", erp);
+//            Tracing.Trace("erp = {0}", erp);
             return (String.IsNullOrEmpty(realm))
                 ? "OAuth " + erp
                 : String.Format("OAuth realm=\"{0}\", ", realm) + erp;
@@ -618,7 +618,7 @@ namespace OAuth
             // append the UrlEncoded version of that string to the sigbase
             sb.Append(UrlEncode(sb1.ToString().TrimEnd('&')));
             var result = sb.ToString();
-            Tracing.Trace("Sigbase: '{0}'", result);
+//            Tracing.Trace("Sigbase: '{0}'", result);
             return result;
         }
 
@@ -632,7 +632,7 @@ namespace OAuth
             string keystring = string.Format("{0}&{1}",
                                              UrlEncode(this["consumer_secret"]),
                                              UrlEncode(this["token_secret"]));
-            Tracing.Trace("keystring: '{0}'", keystring);
+//            Tracing.Trace("keystring: '{0}'", keystring);
             var hmacsha1 = new HMACSHA1
                 {
                     Key = System.Text.Encoding.ASCII.GetBytes(keystring)

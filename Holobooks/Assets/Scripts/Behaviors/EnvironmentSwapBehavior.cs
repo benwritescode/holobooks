@@ -11,22 +11,15 @@ public class EnvironmentSwapBehavior : MonoBehaviour
 	{
 		switch (eType) {
 		case EnvironmentType.EnvironmentTypeINVALID:
+			break;
 		case EnvironmentType.EnvironmentTypeEND:
-			{
-				// Invalid enum passed in, do nothing.
-			}
+			break;				// Invalid enum passed in, do nothing.
 		case EnvironmentType.EnvironmentTypeLibrary:
-			{
-				// display library environment
-			}
+			break;	// display library environment
 		case EnvironmentType.EnvironmentTypeBeach:
-			{
-				// display beach environment
-			}
+			break;// display beach environment
 		case EnvironmentType.EnvironmentTypeSnow:
-			{
-				// display snowy environment.
-			}
+			break;// display snowy environment.
 		}
 
 	}
