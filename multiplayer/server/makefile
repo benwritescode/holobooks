@@ -10,7 +10,7 @@
 
 
 # If server.exe exists, execute it using the "mono" command.
-run: server
+run: server.exe
 	mono server.exe
 
 # If it exists, copy the generated server.exe to the local directory
@@ -18,7 +18,7 @@ server.exe: ./server/obj/x86/Debug/server.exe
 	cp ./server/obj/x86/Debug/server.exe ./server.exe
 
 # build server.exe by running "xbuild" on the C# / .Net solution file in the local directory
-./server/obj/x86/Debug/server.exe:
+./server/obj/x86/Debug/server.exe: ./server/Program.cs
 	xbuild server.sln
 
 # delete executables
@@ -34,7 +34,9 @@ helloworld.exe: ./tests/helloworld/helloworld.cs
 	mcs ./tests/helloworld/helloworld.cs
 	cp ./tests/helloworld/helloworld.exe ./helloworld.exe
 
-
+# target to open monodevelop project
+# dev:
+# 	md server.sln
 
 
 
