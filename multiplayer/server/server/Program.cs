@@ -26,10 +26,15 @@ using System.Net.Sockets;
 using System.IO;
 using System.Text;
 
-// For those threads
+// For threads
 using System.Threading;
 
-
+// Wraps a message
+public struct MessageStruct
+{
+	public int clientid;
+	public string message;
+}
 
 
 class Server
@@ -40,7 +45,9 @@ class Server
 
 
 	Object lockMessages = new Object ();
-	private Queue<string> messagesQueue = new Queue<string> ();
+	// MessageStruct holds a reference to basestream
+	// This allows us to avoid sending a message back to the client that sent the message to us.
+	private Queue<MessageStruct> messageStructsQueue = new Queue<MessageStruct> ();
 
 	Object lockStreamWriters = new Object ();
 	private List<StreamWriter> streamWriters = new List<StreamWriter> ();
@@ -112,8 +119,6 @@ class Server
 		while (true) {
 			// Wait for new messages before attempting to lock again.
 			waitForNewMessages.WaitOne ();
-			Console.WriteLine ("WriteMessagesToClients: received signal. Will attempt to write message.");
-
 
 			// Obtain a lock on the stream writers
 			// so that we can write a message
@@ -125,29 +130,37 @@ class Server
 			lock (lockStreamWriters) {
 				lock (lockMessages) {
 					// Once we obtain the lock, write the message.
-					while (messagesQueue.Count > 0) {
+					while (messageStructsQueue.Count > 0) {
 
-						string message = messagesQueue.Dequeue ();
+						MessageStruct message_struct = messageStructsQueue.Dequeue ();
 
 						foreach (StreamWriter mywriter in this.streamWriters) {
-
 
 							// Make sure the writer is still good. If it's not, we'll remove it.
 							if (mywriter.BaseStream != null) {
 
-								try {
-									Console.WriteLine ("WriteMessagesToClients: writing message: " + message);
 
-									mywriter.WriteLine ("Server says \"Hello!\" You sent: \"" + message + "\""); 
+								// check to make sure we aren't sending a message back to the sender.
+								// != on the hashcode on the basestream guarantees that this message is only sent 
+								// to all the other clients, instead of back to the sender.
+								if (mywriter.BaseStream.GetHashCode () != message_struct.clientid) {
+									try {
+										Console.WriteLine ("WriteMessagesToClients: writing message: " + message_struct.message);
 
-									// Flushing aggressively for now. 
-									// This likely shouldn't cause performance issues, since our messages will have a relatively slow rate, anyway
+										mywriter.WriteLine (message_struct.message);
+										// Flushing aggressively for now. 
+										// This likely shouldn't cause performance issues, since our messages will have a relatively slow rate, anyway
 
-									mywriter.Flush ();
-								} catch (System.IO.IOException e) {
-									writersToRemove.Enqueue (mywriter);
+										mywriter.Flush ();
+									} catch (System.IO.IOException e) {
+										writersToRemove.Enqueue (mywriter);
+									}
+								} else {
+									// Console.WriteLine ("WriteMessagesToClients: can't write message back to client with hashcode ID: " + mywriter.BaseStream.GetHashCode ());
+
 								}
 							} else {
+								// bad writer. Connection failed or client disconnected. Remove this writer from the writer list later.
 								writersToRemove.Enqueue (mywriter);
 							}
 						}
@@ -178,15 +191,26 @@ class Server
 
 		while (reader.BaseStream != null) {
 			try {
+
+				MessageStruct my_struct;
+
+
+				// wrap the message in a struct
+				// this allows us to keep track of which stream a message came from
+
 				string my_message = reader.ReadLine ();
-				if (null != my_message) {
+				
+				my_struct.clientid = reader.BaseStream.GetHashCode ();
+				my_struct.message = my_message;
+
+				if (null != my_struct.message) {
 					Console.WriteLine ("ListenToClient: Received message: " + my_message);
 
 					// Obtain a lock on the messages queue
 					// so that we can save the new message into the queue.
 					lock (lockMessages) {
 						// Once we obtain the lock, save the message in the messages queue.
-						messagesQueue.Enqueue (my_message);
+						messageStructsQueue.Enqueue (my_struct);
 					}
 
 					// Notify the WriteMessagesToClients thread that a new message is waiting to be written.
@@ -198,7 +222,6 @@ class Server
 		}
 
 		Console.WriteLine ("ListenToClient: Client disconnected.");
-
 
 	}
 
