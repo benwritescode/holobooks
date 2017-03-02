@@ -43,8 +43,8 @@ public class LeftBookController : MonoBehaviour {
 
 
 	void slideBook(float x, float y){
-		Vector3 trans = new Vector3 (-x,0, -y);
-		book.transform.Translate (trans* 2 * Time.deltaTime);
+		Vector3 trans = new Vector3 (x,0, y);
+		book.transform.Translate (trans* 1 * Time.deltaTime);
 	}
 
 	void zoomBookIn(){
