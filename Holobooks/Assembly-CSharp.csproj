@@ -75,9 +75,10 @@
      <Compile Include="Assets\Scripts\Data\BookReference.cs" />
      <Compile Include="Assets\Scripts\Data\EnvironmentType.cs" />
      <Compile Include="Assets\Scripts\Data\PageData.cs" />
+     <Compile Include="Assets\Scripts\Z_BB\LeftBookController.cs" />
      <Compile Include="Assets\Scripts\Z_BB\Page.cs" />
+     <Compile Include="Assets\Scripts\Z_BB\RightBookController.cs" />
      <Compile Include="Assets\Scripts\Z_BB\Utils.cs" />
-     <Compile Include="Assets\Scripts\Z_BB\ViveController.cs" />
      <Compile Include="Assets\Scripts\Z_BB\main.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
