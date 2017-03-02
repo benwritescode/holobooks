@@ -46,6 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AnimatedBook\Scripts\AnimatedBookController.cs" />
+     <Compile Include="Assets\AnimatedBook\Scripts\BookTransitionState.cs" />
+     <Compile Include="Assets\AnimatedBook\Scripts\BookUIButtonController.cs" />
+     <Compile Include="Assets\AnimatedBook\Scripts\Demo\DemoBookController.cs" />
      <Compile Include="Assets\Customizable_Furnture\Source\Scripts\CleanUpAll.cs" />
      <Compile Include="Assets\Customizable_Furnture\Source\Scripts\Clock\AnalogicClock.cs" />
      <Compile Include="Assets\Customizable_Furnture\Source\Scripts\Clock\ClockTimer.cs" />
