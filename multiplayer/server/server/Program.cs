@@ -41,7 +41,7 @@ class Server
 {
 
 	const int port = 5556;
-	const string my_ip = "127.0.0.1";
+	const string my_ip = "45.56.115.75";
 
 
 	Object lockMessages = new Object ();

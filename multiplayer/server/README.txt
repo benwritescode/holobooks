@@ -20,7 +20,7 @@ After saving, you'll have to run your bash_profile again to get the updated path
 
 > source ~/.bash_profile
 
-To test that your mono installation is working, try
+To test that your mono installation is working in the same directory as this README, try:
 
 > make test
 
@@ -30,10 +30,99 @@ It should compile hello_world.cs into hello_world.exe, and then run it, which wi
 
 When you're ready to compile and run the server, type
 
-> make
+> make run
 
 If you have trouble with any of this, please feel free to contact me (benwritescode)
 
+===================================================================
+
+Suggested Linux server installation and configuration:
+
+Create a user called "holobooks". Then, whenever you want to run the Holobooks server application, you can switch user to the holobooks user. Once you are in the Holobooks user, you can use Screen to background the server application process. That way, when you log off, the server application will keep running. When you want to turn the server off, you can reconnect to the screen to exit the process. After SSHing into your server, follow the steps below:
+
+# Create holobooks user and make home directory
+# make a new user. The password doesn't matter, as long as you have an admin account to use to switch to the user.
+sudo useradd holobooks
+
+# passwd - this step is optional to create a password for the user.
+sudo passwd holobooks
+
+# make a home directory for the holobooks user
+sudo mkhomedir_helper holobooks
+
+# by default, new users in some Linux distributions don't have Bash as their default terminal, which means TAB key autocomplete won't work when you are using SSH. Fix it by switching the Holobooks' user's default login shell from /bin/sh to /bin/bash:
+sudo chsh -s /bin/bash holobooks
+
+# before you switch to holobooks, we also need to install an application called "screen". This will allow us to run our server executable in the background, and disconnect from the server, and later reconnect to manage the server executable.
+sudo apt-get install screen
+
+# we also will need Json.net to read our config file. First, install nuget, which manages Mono develop packages:
+# update: we don't need nuget. figured out how to deserialize json without an external package.
+# sudo apt-get install nuget
+
+# update: we don't need nuget. figured out how to deserialize json without an external package.
+# next, install Newtonsoft.Json using Nuget.
+# nuget install Newtonsoft.Json
+
+# switch to the user
+sudo su holobooks
+
+# pull the project from github:
+git clone https://github.com/benwritescode/holobooks.git
+
+# change directory into Holobooks project:
+cd holobooks
+
+# change branches to benwritescode (in the future, all server code will be in the main branch, and this won't be necessary)
+git checkout benwritescode
+
+# CD into server directory:
+cd ./multiplayer/server
+
+# run "make" to build the server executable
+make
+
+# Okay, that's the end of the one time setup.
+# The rest of the steps should be performed each time you want to start the server.
+
+# Now we're ready to run the server executable with "make run". However, you should put it in a screen, so it will keep running after you disconnect from the server. First, we must run "script /dev/null" so we can "own" this shell, which allows us to use screen:
+script /dev/null
+
+# Next, create a screen:
+screen
+
+# now that you are in a screen, start the server executable:
+make run
+
+# to disconnect from your screen, press CTRL-A, lift your fingers, and then press the D key
+
+# to reconnect to your screen:
+screen -r
+
+# to exit (end) a screen, type:
+exit
+
+References:
+https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-starting-create-account.html
+http://askubuntu.com/questions/335961/create-default-home-directory-for-existing-user-in-terminal
+http://askubuntu.com/questions/325807/arrow-keys-tab-complete-not-working
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
+https://makandracards.com/makandra/2533-solve-screen-error-cannot-open-your-terminal-dev-pts-0-please-check
+http://www-users.cs.umn.edu/~gini/1901-07s/files/script.html
+http://serverfault.com/questions/309052/check-if-port-is-open-or-closed-on-a-linux-server
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+http://stackoverflow.com/questions/24049992/json-net-on-ubuntu-linux
+http://stackoverflow.com/questions/38118548/how-to-install-nuget-from-command-line-on-linux
+https://docs.microsoft.com/en-us/nuget/tools/nuget-exe-cli-reference
+
+===================================================================
+
+Bonus:
+
+If you want to be able to connect to your server with SSH without typing your password, you can generate an SSH key and add it to your login on the server by following this tutorial:
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
 ===================================================================
 

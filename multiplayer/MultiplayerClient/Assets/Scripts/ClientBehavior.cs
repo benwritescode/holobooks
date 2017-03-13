@@ -32,7 +32,8 @@ public class ClientBehavior : MonoBehaviour
 	// https://msdn.microsoft.com/en-us/library/system.net.sockets.tcpclient(v=vs.110).aspx
 
 	const int port = 5556;
-	const string host_ip = "127.0.0.1";
+	// Our Holobooks server IP is currently: 45.56.115.75
+	const string host_ip = "45.56.115.75";
 
 	TcpClient client;
 
@@ -67,7 +68,7 @@ public class ClientBehavior : MonoBehaviour
 		try {
 
 			// get TCP client to connect to server
-			client = new TcpClient ("localhost", port);
+			client = new TcpClient (host_ip, port);
 
 			// get writer to write to server
 			writer = new StreamWriter (client.GetStream (), Encoding.ASCII);
