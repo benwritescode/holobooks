@@ -19,6 +19,9 @@ using System.Threading;
 // https://docs.unity3d.com/Manual/JSONSerialization.html
 
 // This class is for sending and receiving strings.
+using System;
+
+using MiniJSON;
 
 public class ClientBehavior : MonoBehaviour
 {
@@ -31,10 +34,6 @@ public class ClientBehavior : MonoBehaviour
 
 	// https://msdn.microsoft.com/en-us/library/system.net.sockets.tcpclient(v=vs.110).aspx
 
-	const int port = 5556;
-	// Our Holobooks server IP is currently: 45.56.115.75
-	const string host_ip = "45.56.115.75";
-
 	TcpClient client;
 
 	//https://msdn.microsoft.com/en-us/library/system.io.streamreader(v=vs.110).aspx
@@ -46,7 +45,7 @@ public class ClientBehavior : MonoBehaviour
 
 
 	// Lock for messages queue.
-	Object lockMessages = new Object ();
+	System.Object lockMessages = new System.Object ();
 	// Messages queue of strings to callback on delegate.
 	// When we receive a message from the server, we enqueue it here
 	// Whenever the main thread runs update(), it checks for messages here
@@ -66,6 +65,21 @@ public class ClientBehavior : MonoBehaviour
 	{
 		Debug.Log ("ClientBehavior: start()");
 		try {
+
+
+			int port = 5556;
+			string host_ip = "127.0.0.1";
+
+			// If the config file loads correctly, go ahead and grab ip address and port.
+			IDictionary values = this.GetConfigDictionary ();
+			if (values.Contains ("ip"))
+				host_ip = (string)values ["ip"];
+			if (values.Contains ("port"))
+				try {
+					port = Convert.ToInt32 (values ["port"]);
+				} catch (Exception e) {
+					Debug.Log ("WaitForNewClients: unable to read port from config.json");
+				}
 
 			// get TCP client to connect to server
 			client = new TcpClient (host_ip, port);
@@ -176,5 +190,38 @@ public class ClientBehavior : MonoBehaviour
 		Debug.Log ("ListenToServer: Disconnected from server.");
 
 
+	}
+
+	// This is for loading a configuration file
+	// This works slightly different than on the server, because Unity doesn't have native JSON deserialization to Dictionary types.
+	private IDictionary GetConfigDictionary ()
+	{
+
+		IDictionary values = null;
+		try {
+			string path = Application.dataPath + "/config.json";
+			string mystring = File.ReadAllText (path);
+
+			// Debug.Log ("GetConfigDictionary: Parent working directory: " + Application.dataPath);
+			// Debug.Log ("GetConfigDictionary: Loading: " + path);
+
+			//attempt to deserialize if possible.
+			// Debug.Log ("GetConfigDictionary: Deserializing string: " + mystring);
+
+			// values = JsonUtility.FromJson<Dictionary<string,string>> (mystring);
+			values = (IDictionary)Json.Deserialize (mystring);
+
+			// foreach (string k in values.Keys) {
+			// 	Debug.Log ("found key: " + k);
+			// }
+
+			Debug.Log ("GetConfigDictionary: Loaded ip: " + values ["ip"]);
+			Debug.Log ("GetConfigDictionary: Loaded port: " + values ["port"]);
+		} catch (Exception e) {
+			Debug.Log ("GetConfigDictionary: Config file config.json is malformed. Could not load settings.");
+			Debug.Log ("GetConfigDictionary: Exception: " + e.ToString ());
+		}
+
+		return values;
 	}
 }

@@ -30,6 +30,9 @@ using System.Text;
 using System.Threading;
 
 // Wraps a message
+using System.Web.Script.Serialization;
+
+
 public struct MessageStruct
 {
 	public int clientid;
@@ -39,11 +42,6 @@ public struct MessageStruct
 
 class Server
 {
-
-	const int port = 5556;
-	const string my_ip = "45.56.115.75";
-
-
 	Object lockMessages = new Object ();
 	// MessageStruct holds a reference to basestream
 	// This allows us to avoid sending a message back to the client that sent the message to us.
@@ -79,10 +77,23 @@ class Server
 
 	public void WaitForNewClients ()
 	{
+		int port = 5556;
+		string my_ip = "127.0.0.1";
 
-		Console.WriteLine ("WaitForNewClients:\n");
+		// If the config file loads correctly, go ahead and grab ip address and port.
+		Dictionary<string, string> values = this.GetConfigDictionary ();
+		if (values.ContainsKey ("ip"))
+			my_ip = values ["ip"];
+		if (values.ContainsKey ("port"))
+			try {
+				port = Convert.ToInt32 (values ["port"]);
+			} catch (Exception e) {
+				Console.WriteLine ("WaitForNewClients: unable to read port from config.json");
+			}
+
+		Console.WriteLine ("WaitForNewClients: Listening at " + my_ip + " on port " + port + ". \n");
+
 		System.Net.IPAddress localAddress = IPAddress.Parse (my_ip);
-
 		TcpListener tcpListener = new TcpListener (localAddress, port);
 		tcpListener.Start ();
 
@@ -223,6 +234,26 @@ class Server
 
 		Console.WriteLine ("ListenToClient: Client disconnected.");
 
+	}
+
+	private Dictionary<string, string> GetConfigDictionary ()
+	{
+
+		Dictionary<string,string> values = new Dictionary<string,string> ();
+		try {
+			var serializer = new JavaScriptSerializer (); //using System.Web.Script.Serialization;
+			string mystring = File.ReadAllText (@"./config.json");
+
+			//attempt to deserialize if possible.
+			values = serializer.Deserialize<Dictionary<string, string>> (mystring);
+
+			Console.WriteLine ("GetConfigDictionary: Loaded ip: " + values ["ip"]);
+			Console.WriteLine ("GetConfigDictionary: Loaded port: " + values ["port"]);
+		} catch (Exception e) {
+			Console.WriteLine ("GetConfigDictionary: Config file config.json is malformed. Could not load settings.");
+		}
+
+		return values;
 	}
 
 }

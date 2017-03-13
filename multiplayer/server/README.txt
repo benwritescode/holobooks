@@ -40,40 +40,35 @@ Suggested Linux server installation and configuration:
 
 Create a user called "holobooks". Then, whenever you want to run the Holobooks server application, you can switch user to the holobooks user. Once you are in the Holobooks user, you can use Screen to background the server application process. That way, when you log off, the server application will keep running. When you want to turn the server off, you can reconnect to the screen to exit the process. After SSHing into your server, follow the steps below:
 
-# Create holobooks user and make home directory
-# make a new user. The password doesn't matter, as long as you have an admin account to use to switch to the user.
+# SSH into your server
+ssh user@server
+
+# Create user named "holobooks" and make a home directory for the user
+# Make a new user. The password doesn't matter, as long as you have an admin account to use to switch to the user.
 sudo useradd holobooks
 
-# passwd - this step is optional to create a password for the user.
+# passwd - This step is optional to create a password for the user. You don't need to use the password if you're an administrator.
 sudo passwd holobooks
 
-# make a home directory for the holobooks user
+# Make a home directory for the holobooks user
 sudo mkhomedir_helper holobooks
 
-# by default, new users in some Linux distributions don't have Bash as their default terminal, which means TAB key autocomplete won't work when you are using SSH. Fix it by switching the Holobooks' user's default login shell from /bin/sh to /bin/bash:
+# By default, new users in some Linux distributions don't have Bash as their default terminal, which means TAB key autocomplete won't work when you are using SSH. Fix it by switching the Holobooks' user's default login shell from /bin/sh to /bin/bash:
 sudo chsh -s /bin/bash holobooks
 
-# before you switch to holobooks, we also need to install an application called "screen". This will allow us to run our server executable in the background, and disconnect from the server, and later reconnect to manage the server executable.
+# Before you switch to holobooks, we also need to install an application called "screen". This will allow us to run our server executable in the background, and disconnect from the server, and later reconnect to manage the server executable.
 sudo apt-get install screen
 
-# we also will need Json.net to read our config file. First, install nuget, which manages Mono develop packages:
-# update: we don't need nuget. figured out how to deserialize json without an external package.
-# sudo apt-get install nuget
-
-# update: we don't need nuget. figured out how to deserialize json without an external package.
-# next, install Newtonsoft.Json using Nuget.
-# nuget install Newtonsoft.Json
-
-# switch to the user
+# Switch to the user
 sudo su holobooks
 
-# pull the project from github:
+# Clone the project from github:
 git clone https://github.com/benwritescode/holobooks.git
 
-# change directory into Holobooks project:
+# Change directory into Holobooks project:
 cd holobooks
 
-# change branches to benwritescode (in the future, all server code will be in the main branch, and this won't be necessary)
+# Change branches to benwritescode (in the future, all server code will be in the main branch, and it won't be necessary to switch branches)
 git checkout benwritescode
 
 # CD into server directory:
@@ -85,13 +80,13 @@ make
 # Okay, that's the end of the one time setup.
 # The rest of the steps should be performed each time you want to start the server.
 
-# Now we're ready to run the server executable with "make run". However, you should put it in a screen, so it will keep running after you disconnect from the server. First, we must run "script /dev/null" so we can "own" this shell, which allows us to use screen:
+# Now we're ready to run the server executable with "make run". However, you should put it in a screen, so it will keep running after you disconnect from the server. First, we must run "script /dev/null" so we can "own" this shell, which allows us to use the "screen" command:
 script /dev/null
 
 # Next, create a screen:
 screen
 
-# now that you are in a screen, start the server executable:
+# Now that you are in a screen, start the server executable:
 make run
 
 # to disconnect from your screen, press CTRL-A, lift your fingers, and then press the D key
