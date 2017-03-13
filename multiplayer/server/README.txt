@@ -2,7 +2,7 @@ To compile this project, you need Mono installed.
 
 Mono is a cross platform open source framework which implements the .NET standard. (and supported by Microsoft)
 
-Go here to download and install Mono: http://www.mono-project.com/
+Go here to download and install Mono for your OS: http://www.mono-project.com/
 
 On Mac: you'll also want to make sure that Mono and MCS (its compiling command) are part of your console path by adding an EXPORT line to your bash profile. Look here: http://stackoverflow.com/questions/32542535/how-to-install-mono-on-macos-so-mono-works-in-terminal
 
@@ -121,7 +121,7 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
 
 ===================================================================
 
-Bonus:
+Bonus 2:
 
 If you want to be able to open C# files in MonoDevelop from the command line, add MonoDevelop to your path, by adding this line to your bash_profile:
 
@@ -135,11 +135,11 @@ Then, to open a C# file from the command line, type:
 
 ===================================================================
 
-Bonus 2:
+Bonus 3:
 
 Make a shorter alias for "monodevelop" (md), and switch focus to MonoDevelop simultaneously. Add these lines to your ~/.bash_profile:
 
-># alias for opening files with MonoDevelop from terminal. Also switches application focus to MonoDevelop manually.
+> # alias for opening files with MonoDevelop from terminal. Also switches application focus to MonoDevelop manually.
 >function md_function() {	
 >	# The below commented out line works, but it ultimately opens the file for editing under the binary named 'mono' inside of MonoDevelop instead of the main application 'MonoDevelop.app'. 
 >	# you can use the line below on Linux, but you'll probably have to switch application focus to 'mono' manually.
@@ -154,7 +154,7 @@ Make a shorter alias for "monodevelop" (md), and switch focus to MonoDevelop sim
 
 =====================================================================
 
-Bonus 3:
+Bonus 4:
 
 If you want Sublime to have autocomplete for C# files, follow this tutorial. I haven't quite gotten OmniSharp to work with Sublime yet, though, so I'm currently using MonoDevelop on Mac. (see above)
 
