@@ -19,11 +19,8 @@ using Configuration;
 public class SpeechToText : MonoBehaviour
 {
 
-
-	// See Microsoft tutorial for delegates/callbacks here:
 	// Here is the delegate type for returning the text result.
 	public delegate void SpeechToTextCallback (string text);
-
 
 	// Use this for initialization
 	void Start ()
@@ -38,7 +35,6 @@ public class SpeechToText : MonoBehaviour
 
 		string dataPath = Application.dataPath;
 		string pythonPath = Config.PythonPath ();
-
 
 		// save the audio clip as a .wav file
 		SavWav.Save (dataPath, "clip", clip);
