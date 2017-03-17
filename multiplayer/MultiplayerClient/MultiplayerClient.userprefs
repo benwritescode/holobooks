@@ -1,9 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../server/tests/yml/yml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SendMessageTester.cs">
     <Files>
-      <File FileName="Assets/Scripts/ClientBehavior.cs" Line="71" Column="26" />
-      <File FileName="../server/tests/yml/yml.cs" Line="2" Column="23" />
+      <File FileName="Assets/Scripts/SendMessageTester.cs" Line="2" Column="25" />
+      <File FileName="Assets/config.json" Line="2" Column="20" />
+      <File FileName="Assets/Scripts/ClientBehavior.cs" Line="218" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

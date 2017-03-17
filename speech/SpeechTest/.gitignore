@@ -1,6 +1,4 @@
-# .gitignore file retrieved 10/16/2016 from http://kleber-swf.com/the-definitive-gitignore-for-unity-projects/ #
-# See: https://web.archive.org/web/20160704165626/http://kleber-swf.com/the-definitive-gitignore-for-unity-projects/ #
-# Or see: http://archive.is/XehDp #
+# Thanks for .gitignore guidance from http://kleber-swf.com/the-definitive-gitignore-for-unity-projects/ # 
 # =============== #
 # Unity generated #
 # =============== #
@@ -36,6 +34,3 @@ sysinfo.txt
 ehthumbs.db
 [Tt]humbs.db
 [Dd]esktop.ini
-
-/pocketsphinx
-/sphinxbase
