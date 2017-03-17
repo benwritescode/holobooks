@@ -22,18 +22,3 @@ One last step has to be manual: you need to add Pocket Sphinx to a library path 
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
-
-=======
-# Google Cloud API installation instructions. 
-
-Next, install Google Cloud API for our Google Cloud features:
-
-https://cloud.google.com/sdk/docs/quickstart-mac-os-x
-
-You can use Google's interactive installer by downloading and running their provided Bash script:
-
-curl https://sdk.cloud.google.com | bash
-
-It will request an installation directory.
-
-=====
