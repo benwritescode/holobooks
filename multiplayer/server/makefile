@@ -1,6 +1,5 @@
-# type "make" to compile the server.
-
-# type "make run" to run the server.
+# type "make" to compile the multiplayer server and install murmur.
+# type "make run" to run multiplayer server and start the murmur server.
 
 # makefile to compile and run server.
 # compiling/running Mono: https://codetuts.tech/compile-c-sharp-command-line/
@@ -9,12 +8,21 @@
 # mac terminal: http://stackoverflow.com/questions/8480157/building-and-running-monodevelop-solution-in-os-x-terminal
 # linux terminal: http://stackoverflow.com/questions/7437837/building-c-sharp-console-project-from-linux-terminal-using-mono
 
-# default: just build the server.
-default: server.exe
+# installing/running Murmur: https://wiki.mumble.info/wiki/Murmurguide#Linux
+
+# default: just build the server. Also, install Murmur.
+default: server.exe .murmur_installed
+
+# start multiplayer server, start murmur server
+run: multiplayer murmur
 
 # If server.exe exists, execute it using the "mono" command.
-run: server.exe
+multiplayer: server.exe 
 	mono server.exe
+
+# If .murmur_installed has been touched, then run our murmur server using murmurd
+murmur: .murmur_installed
+	murmurd
 
 # If it exists, copy the generated server.exe to the local directory
 server.exe: ./server/obj/x86/Debug/server.exe
@@ -48,6 +56,13 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	xbuild ./tests/jsontest/jsontest.sln 
 	cp tests/jsontest/jsontest/bin/Debug/jsontest.exe ./jsontest.exe
 
+# hidden file .murmur_installed indicates whether we have already installed murmur.
+.murmur_installed:
+	sudo add-apt-repository ppa:slicer/ppa
+	sudo apt-get update
+	sudo apt-get install mumble-server
+	sudo dpkg-reconfigure mumble-server
+	touch .murmur_installed
 
 # target to open monodevelop project
 # dev:
