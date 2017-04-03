@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [[ $EUID > 0 ]]; then 
+if [[ $EUID -eq 0 ]]; then 
 	echo "======================================================"
 	echo "Running as normal user.";
 	echo "Please run make one time as root to install necessary dependencies."; 
