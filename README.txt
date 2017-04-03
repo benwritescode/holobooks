@@ -18,7 +18,13 @@ If not, you can install SpeechRecognition, PocketSphinx, and SphinxBase by follo
 http://cmusphinx.sourceforge.net/wiki/tutorialpocketsphinx
 https://pypi.python.org/pypi/SpeechRecognition/
 
-One last step has to be manual: you need to add Pocket Sphinx to a library path in your .bash_profile. Add these lines to your .bash_profile:
+One last step for Pocket Sphinx has to be manual: you need to add Pocket Sphinx to a library path in your .bash_profile. Add these lines to your .bash_profile:
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
+
+# Install a voice chat client
+
+On the server side, we are using "Murmur," and open source server for voice chat. The corresponding client side application is called "Mumble." You should be able to install it fairly easily by visiting Mumble's download page. I was able to install it on Mac with their wizard in a few minutes. Visit the link below to download and install Murmur for your operating system:
+
+http://www.mumble.com/mumble-download.php
 
