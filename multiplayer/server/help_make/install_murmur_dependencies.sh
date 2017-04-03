@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ $EUID -eq 0 ]; then 
+if [[ $EUID -eq 0 ]]; then 
 
 	echo "======================================================"
 	echo "Running as normal user.";
@@ -12,7 +12,6 @@ if [ $EUID -eq 0 ]; then
 else 
 
 	# dependencies
-
 	sudo apt-get install build-essential pkg-config qt5-default qtbase5-dev qttools5-dev qttools5-dev-tools libqt5svg5* \
 	libspeex1 libspeex-dev libboost-dev libasound2-dev libssl-dev g++ \
 	libspeechd-dev libzeroc-ice-dev ice-slice libpulse-dev slice2cpp \
@@ -20,15 +19,8 @@ else
 	libogg-dev libavahi-compat-libdnssd-dev libsndfile1-dev \
 	libg15daemon-client-dev libxi-dev 
 	sudo apt-get install git
-	sudo apt-get install zip	
-	wget https://github.com/mumble-voip/mumble/archive/master.zip
-	unzip master.zip -d mumble
+	sudo apt-get install zip
 
-	# checkout stable 1.2.x ...
-	cd mumble/mumble-master
-	git submodule init 
-	git submodule update 
-	git pull
 
 	# && git checkout --track -b 1.2.x origin/v1.2.x \
 

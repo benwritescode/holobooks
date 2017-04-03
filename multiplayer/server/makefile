@@ -89,12 +89,26 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 # http://stackoverflow.com/questions/638975/how-do-i-tell-if-a-regular-file-does-not-exist-in-bash
 # http://stackoverflow.com/questions/18215973/how-to-check-if-running-as-root-in-a-bash-script
 .murmur_installed_from_source: .murmur_dependencies
+	
+	wget https://github.com/mumble-voip/mumble/archive/master.zip
+	unzip master.zip -d mumble
+
+	# checkout stable 1.2.x ...
+	cd mumble/mumble-master \
+	&& git submodule init \
+	&& git submodule update \
+	&& git pull
+
+
 	# make sure we aren't running as root/sudo.
 	./help_make/assert_not_root.sh
 	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
 	cd mumble/mumble-master \
 	&& qmake -recursive main.pro CONFIG+=no-client \
 	&& make; 
+
+
+
 
 .murmur_dependencies:
 	./help_make/install_murmur_dependencies.sh
