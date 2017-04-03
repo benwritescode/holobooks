@@ -1,13 +1,15 @@
 #!/bin/sh
 
-if [[ $EUID -eq 0 ]]; then 
+if [ $EUID -eq 0 ]; then 
+
 	echo "======================================================"
 	echo "Running as normal user.";
 	echo "Please run make one time as root to install necessary dependencies."; 
 	echo "======================================================"
 
 	exit 1;
-else \
+
+else 
 
 	# dependencies
 
@@ -23,10 +25,10 @@ else \
 	unzip master.zip -d mumble
 
 	# checkout stable 1.2.x ...
-	cd mumble/mumble-master \
-	&& git submodule init \
-	&& git submodule update \
-	&& git pull
+	cd mumble/mumble-master
+	git submodule init 
+	git submodule update 
+	git pull
 
 	# && git checkout --track -b 1.2.x origin/v1.2.x \
 
