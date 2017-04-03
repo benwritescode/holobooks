@@ -9,7 +9,7 @@ if [[ $EUID > 0 ]]; then
 else 
 	echo "======================================================"
 	echo "Running as root." 
-	echo "Next, please type \"make\" as a normal (not sudo or root) user to finish building murmur."; 
+	echo "Next, please type \"make\" as a normal (not using sudo or root) user to finish building murmur."; 
 	echo "======================================================"
 	exit 1;
 

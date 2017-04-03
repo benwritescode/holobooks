@@ -4,7 +4,8 @@ if [[ $EUID > 0 ]]; then
 
 	echo "======================================================"
 	echo "Running as normal user.";
-	echo "Please run make one time as root to install necessary dependencies."; 
+	echo "Please run make one time as root to install necessary dependencies. Type:"; 
+	echo "sudo make";
 	echo "======================================================"
 
 	exit 1;

@@ -27,7 +27,7 @@ start_murmur: start
 
 start: .murmur_installed_from_source
 	echo =================================================
-	echo Holobooks multiplayer makefile: make start: Starting Murmur. Please type in \"make stop\" when you\'re done. Or \"make restart\" to restart the Murmur server.
+	echo "Holobooks multiplayer makefile: make start: Starting Murmur. Please type in \"make stop\" when you\'re done. Or \"make restart\" to restart the Murmur server."
 	echo =================================================
 	cd ./mumble/mumble-master/release && ./murmurd
 
@@ -109,8 +109,6 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	&& make; 
 
 	touch .murmur_installed_from_source
-
-
 
 .murmur_dependencies:
 	bash ./help_make/install_murmur_dependencies.sh
