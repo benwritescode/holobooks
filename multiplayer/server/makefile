@@ -85,6 +85,40 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	sudo dpkg-reconfigure mumble-server
 	touch .murmur_installed
 
+
+# build and install from source
+# http://wiki.mumble.info/wiki/BuildingLinux#Debian_or_Ubuntu
+.murmur_installed_from_source:
+
+	# dependencies
+	sudo apt-get install build-essential pkg-config qt5-default qtbase5-dev qttools5-dev qttools5-dev-tools libqt5svg5* \
+	libspeex1 libspeex-dev libboost-dev libasound2-dev libssl-dev g++ \
+	libspeechd-dev libzeroc-ice-dev ice-slice libpulse-dev slice2cpp \
+	libcap-dev libspeexdsp-dev libprotobuf-dev protobuf-compiler \
+	libogg-dev libavahi-compat-libdnssd-dev libsndfile1-dev \
+	libg15daemon-client-dev libxi-dev 
+	sudo apt-get install git
+	sudo apt-get install zip
+	
+
+	wget https://github.com/mumble-voip/mumble/archive/master.zip
+	unzip master.zip -d mumble
+
+	# checkout stable 1.2.x ...
+	cd mumble/mumble-master \
+	&& git submodule init \
+	&& git submodule update \
+	&& git pull
+
+	# && git checkout --track -b 1.2.x origin/v1.2.x \
+	
+
+	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
+	qmake -recursive main.pro CONFIG+=no-client
+	make
+
+
+
 # Binary installation (alternative)
 # Don't use this for now. Debian package seems to work well.
 # If you want to use this, consider looking here for instructions on starting using the binary instead of the package:
