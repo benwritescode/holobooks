@@ -32,7 +32,6 @@ If you need to debug your Murmur server, you can use this command to make sure t
 
 nmap -p 64738 45.56.115.75
 
-
 Check for these results from nmap:
 
 "filtered" == port blocked by firewall
