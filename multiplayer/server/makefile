@@ -47,10 +47,16 @@ stop:
 
 # If the Holobooks server.exe exists, copy the generated server.exe to the local directory
 server.exe: ./server/obj/x86/Debug/server.exe
+	# make sure we aren't running as root/sudo.
+	./help_make/assert_not_root.sh
+
 	cp ./server/obj/x86/Debug/server.exe ./server.exe
 
 # build server.exe by running "xbuild" on the C# / .Net solution file in the local directory
 ./server/obj/x86/Debug/server.exe: ./server/Program.cs
+	# make sure we aren't running as root/sudo.
+	./help_make/assert_not_root.sh
+
 	xbuild server.sln
 
 # delete executables
@@ -80,17 +86,18 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 
 # build and install from source
 # http://wiki.mumble.info/wiki/BuildingLinux#Debian_or_Ubuntu
-
 # http://stackoverflow.com/questions/638975/how-do-i-tell-if-a-regular-file-does-not-exist-in-bash
 # http://stackoverflow.com/questions/18215973/how-to-check-if-running-as-root-in-a-bash-script
 .murmur_installed_from_source: .murmur_dependencies
+	# make sure we aren't running as root/sudo.
+	./help_make/assert_not_root.sh
 	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
 	cd mumble/mumble-master \
 	&& qmake -recursive main.pro CONFIG+=no-client \
 	&& make; 
 
 .murmur_dependencies:
-	./install_murmur_dependencies.sh
+	./help_make/install_murmur_dependencies.sh
 
 # target to open monodevelop project
 # dev:
