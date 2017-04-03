@@ -1,4 +1,4 @@
-To compile this project, you need Mono installed.
+To compile the Holobook server, you need Mono installed.
 
 Mono is a cross platform open source framework which implements the .NET standard. (and supported by Microsoft)
 
@@ -35,6 +35,8 @@ When you're ready to compile and run the server, type
 If you have trouble with any of this, please feel free to contact me (benwritescode)
 
 ===================================================================
+
+The following instructions will build both Murmur (our chosen voice chat server), as well as the Holobooks server. They each run on different ports. The makefile has targets to build each of them. The advantage of this is that you can connect to the Murmur voice chat server using a Mumble client, and talk to other users of the Holobooks server.
 
 Suggested Linux server installation and configuration:
 
@@ -74,7 +76,16 @@ git checkout benwritescode
 # CD into server directory:
 cd ./multiplayer/server
 
-# run "make" to build the server executable
+# Switch back to a root user. We need root privilege to install Murmur dependencies.
+exit
+
+# You need to type "sudo make" to get Murmur's dependencies. The makefile detects whether you are building as root.
+sudo make
+
+# Now switch back to the holobooks user:
+sudo su holobooks
+
+# Now type "make" once more to build both Murmur and the Holobooks server.
 make
 
 # Okay, that's the end of the one time setup.
@@ -86,7 +97,7 @@ script /dev/null
 # Next, create a screen:
 screen
 
-# Now that you are in a screen, start the server executable:
+# Now that you are in a screen, start the server executables. This starts both the Holobooks server and the Murmur server. Note that the Murmur server is backgrounded into another process by default, and the Holobooks server runs on the current process.
 make run
 
 # to disconnect from your screen, press CTRL-A, lift your fingers, and then press the D key
@@ -96,6 +107,17 @@ screen -r
 
 # to exit (end) a screen, type:
 exit
+
+# When you're done using the Holobooks server, you can use CTRL-C to end the process.
+# But Murmur is still running in the background. Use the following commands to manage the Murmur server independently of the Holobooks server process:
+
+# to start Murmur server
+make start
+
+# to stop Murmur server
+make stop
+
+# You can look in the file multiplayer/server/makefile for more links about Murmur, and to see how I automated the process of building Murmur from source.
 
 References:
 https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/4/html/Step_by_Step_Guide/s1-starting-create-account.html
