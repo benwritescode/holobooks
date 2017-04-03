@@ -90,7 +90,6 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	&& make; 
 
 .murmur_dependencies:
-	chmod +x install_murmur_dependencies.sh
 	./install_murmur_dependencies.sh
 
 # target to open monodevelop project
