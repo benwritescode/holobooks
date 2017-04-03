@@ -11,36 +11,41 @@
 # installing/running Murmur: https://wiki.mumble.info/wiki/Murmurguide#Linux
 
 # default: just build the server. Also, install Murmur.
-default: server.exe .murmur_installed
+default: server.exe .murmur_installed_from_source
 
-# start multiplayer server, start murmur server
-run: multiplayer start
+# start multiplayer server and start the murmur server
+run: start_murmur multiplayer 
 
 # If server.exe exists, execute it using the "mono" command.
 multiplayer: server.exe 
 	mono server.exe
 
-# If .murmur_installed has been touched, then run our murmur server using murmurd
+# If .murmur_installed_from_source has been touched, then run our murmur server using murmurd
 # https://wiki.mumble.info/wiki/Running_Murmur#Starting_Murmur
-murmur: .murmur_installed
-	/etc/init.d/mumble-server start
-	#sudo -i murmurd -ini /etc/mumble-server.ini -supw your_password_here [srv]
 
-start:
+start_murmur: start
+
+start: .murmur_installed_from_source
 	echo =================================================
 	echo Holobooks multiplayer makefile: make start: Starting Murmur. Please type in \"make stop\" when you\'re done. Or \"make restart\" to restart the Murmur server.
 	echo =================================================
-	/etc/init.d/mumble-server start
+	cd ./mumble/mumble-master/release && ./murmurd
 
-restart:
-	/etc/init.d/mumble-server restart
+# This longer start command didn't really work.
+# # sudo -i murmurd -ini /etc/mumble-server.ini -supw your_password_here [srv]
 
-# stop murmur server.
+# Whenever I tried with -supw or -ini, the port didn't open. I'm not sure exactly why.
+# I found that just running ./murmurd was the only thing that would actually open the port.
+# I tested whether the port was open using nmap on another computer:
+# nmap -p 64738 (server ip address here)
+
+
+# ask murmurd to stop by using pkill
 # http://forums.debian.net/viewtopic.php?f=16&t=39168
 stop:
-	/etc/init.d/mumble-server stop
+	pkill murmurd
 
-# If it exists, copy the generated server.exe to the local directory
+# If the Holobooks server.exe exists, copy the generated server.exe to the local directory
 server.exe: ./server/obj/x86/Debug/server.exe
 	cp ./server/obj/x86/Debug/server.exe ./server.exe
 
@@ -72,19 +77,6 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	xbuild ./tests/jsontest/jsontest.sln 
 	cp tests/jsontest/jsontest/bin/Debug/jsontest.exe ./jsontest.exe
 
-# hidden file .murmur_installed indicates whether we have already installed murmur.
-.murmur_installed:
-	sudo apt-get install software-properties-common
-	# sudo add-apt-repository ppa:slicer/ppa
-	# fixes for missing keys...?
-	# sudo apt-key adv --recv-keys --keyserver keys.gnupg.net E21C4F884E1220C3
-	# sudo apt-key adv --recv-keys --keyserver keys.gnupg.net 4E1220C3
-	sudo apt-get update
-	sudo apt-get install mumble-server
-	# one time configuration of server. this will prompt you to make a password.
-	sudo dpkg-reconfigure mumble-server
-	touch .murmur_installed
-
 
 # build and install from source
 # http://wiki.mumble.info/wiki/BuildingLinux#Debian_or_Ubuntu
@@ -98,8 +90,7 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	libogg-dev libavahi-compat-libdnssd-dev libsndfile1-dev \
 	libg15daemon-client-dev libxi-dev 
 	sudo apt-get install git
-	sudo apt-get install zip
-	
+	sudo apt-get install zip	
 
 	wget https://github.com/mumble-voip/mumble/archive/master.zip
 	unzip master.zip -d mumble
@@ -112,22 +103,9 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 
 	# && git checkout --track -b 1.2.x origin/v1.2.x \
 	
-
 	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
 	qmake -recursive main.pro CONFIG+=no-client
 	make
-
-
-
-# Binary installation (alternative)
-# Don't use this for now. Debian package seems to work well.
-# If you want to use this, consider looking here for instructions on starting using the binary instead of the package:
-# https://wiki.mumble.info/wiki/Running_Murmur#Starting_Murmur
-.murmur_installed_binary:
-	curl http://mumble.info/snapshot/mumble-1.3.0~2198~g282d672~snapshot.tar.gz > mumble.tar.gz
-	tar -xvzf mumble.tar.gz
-	mv mumble-1.3.0~2198~g282d672~snapshot mumble
-	touch .murmur_installed
 
 
 
