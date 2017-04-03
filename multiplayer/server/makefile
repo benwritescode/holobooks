@@ -108,6 +108,7 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	&& qmake -recursive main.pro CONFIG+=no-client \
 	&& make; 
 
+	touch .murmur_installed_from_source
 
 
 
