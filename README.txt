@@ -28,3 +28,15 @@ On the server side, we are using "Murmur," and open source server for voice chat
 
 http://www.mumble.com/mumble-download.php
 
+If you need to debug your Murmur server, you can use this command to make sure the port is open:
+
+nmap -p 64738 45.56.115.75
+
+
+Check for these results from nmap:
+
+"filtered" == port blocked by firewall
+"closed" == port opened by firewall, but no server application is bound to the port
+"open" == port opened by firewall, and a server application is bound to the port
+
+
