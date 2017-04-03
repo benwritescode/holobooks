@@ -1,8 +1,12 @@
 #!/bin/sh
 
 if [[ $EUID > 0 ]]; then 
+	echo "======================================================"
+	echo "Running as normal user.";
 	echo "Please run make one time as root to install necessary dependencies."; 
-	return 1;
+	echo "======================================================"
+
+	exit 1;
 else \
 
 	# dependencies
