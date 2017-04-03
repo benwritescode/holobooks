@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $EUID -eq 0 ]]; then 
+if [[ $EUID > 0 ]]; then 
 
 	echo "======================================================"
 	echo "Running as normal user.";
