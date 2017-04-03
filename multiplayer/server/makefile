@@ -104,8 +104,9 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	# && git checkout --track -b 1.2.x origin/v1.2.x \
 	
 	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
-	qmake -recursive main.pro CONFIG+=no-client
-	make
+	cd mumble/mumble-master \
+	&& qmake -recursive main.pro CONFIG+=no-client
+	&& make
 
 
 
