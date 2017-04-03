@@ -1,3 +1,4 @@
+# client make file
 # based on:
 # https://pypi.python.org/pypi/SpeechRecognition/
 # http://cmusphinx.sourceforge.net/wiki/tutorialpocketsphinx
