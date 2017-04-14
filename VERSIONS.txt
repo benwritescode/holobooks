@@ -1,0 +1,113 @@
+=========================================================================================
+=========================================================================================
+Client software versions:
+=========================================================================================
+=========================================================================================
+Operating system: Mac or Windows for client
+A lot of our development work was done on macOS (version 10.11.6). However, Unity and Python are cross platform, and should work on Windows or Linux as well. We also tested the Holobooks client on Windows with the Oculus Rift VR headset.
+
+=========================================================================================
+MonoDevelop (for editing Mono/C# files)
+
+Version 5.9.6
+=========================================================================================
+Sublime (for editing files)
+
+Build 3114
+=========================================================================================
+Unity (for editing, building, and running the Virtual Reality Holobooks client)
+
+Version 5.4.3f1 personal
+
+=========================================================================================
+Python (for executing our client side script for voice to text)
+Anaconda (Python environment manager)
+
+python --version
+Python 2.7.11 :: Anaconda 2.3.0 (x86_64)
+
+=========================================================================================
+There are various Python packages we used in order to get offline speech recognition working. We primarily rely on CMU Sphinx and SpeechRecognition to interact with it. Here are the relevant lines, as outputted by pip -freeze. A full list from pip -freeze of installed Python packages (current installed on my client Mac) can be found in PYTHON_VERSIONS.txt
+
+pip -freeze
+pocketsphinx==0.1.3
+SpeechRecognition==3.6.3
+Sphinx==1.3.1
+
+=========================================================================================
+nmap (for testing whether ports on your server are configured correctly. Use it via a different computer than the server.)
+
+nmap --version
+Nmap version 7.40 ( https://nmap.org )
+Platform: x86_64-apple-darwin13.4.0
+Compiled with: liblua-5.3.3 openssl-1.0.2j nmap-libpcre-7.6 nmap-libpcap-1.7.3 nmap-libdnet-1.12 ipv6
+Compiled without:
+Available nsock engines: kqueue poll select
+
+=========================================================================================
+git (for working with the Holobooks source repository)
+
+git --version
+git version 2.10.1 (Apple Git-78)
+
+=========================================================================================
+=========================================================================================
+Server software versions:
+=========================================================================================
+=========================================================================================
+Server operating system
+
+lsb_release -a
+No LSB modules are available.
+Distributor ID:	Debian
+Description:	Debian GNU/Linux 8.7 (jessie)
+Release:	8.7
+Codename:	jessie
+
+=========================================================================================
+Screen
+
+screen --version
+Screen version 4.00.03 (FAU) 23-Oct-06
+=========================================================================================
+Murmur
+
+./murmurd -version
+<F>2017-04-14 11:00:26.974 ./murmurd -- Compiled by User
+
+Murmur last change/commit to Github before being built by user on our Holobooks server:
+
+2016-12-23
+  Lari Tikkanen <lartza@outlook.com>
+    6366ff4  Default case for user dragging is unneeded
+    7586175  Use ChannelDrag enum for UserDrag
+    7e6c415  Implement configuring user dragging
+
+  Mikkel Krautz <mikkel@krautz.dk>
+    ddd4764  Merge PR #2709: Add setting to configure user dragging
+
+It looks like this github commit was the last before being packaged for the zip file we used to build Murmur:
+
+https://github.com/mumble-voip/mumble/commit/ddd476499d4b39c76808603ab88bc6c9c9c749a9
+
+=========================================================================================
+Mono
+
+mono --version
+Mono JIT compiler version 4.8.0 (Stable 4.8.0.520/8f6d0f6 Wed Mar 15 16:18:35 UTC 2017)
+Copyright (C) 2002-2014 Novell, Inc, Xamarin Inc and Contributors. www.mono-project.com
+	TLS:           __thread
+	SIGSEGV:       altstack
+	Notifications: epoll
+	Architecture:  amd64
+	Disabled:      none
+	Misc:          softdebug 
+	LLVM:          supported, not enabled.
+	GC:            sgen
+=========================================================================================
+git (for cloning the source repository)
+
+git --version
+git version 2.1.4
+=========================================================================================
+
