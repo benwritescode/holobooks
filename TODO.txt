@@ -6,9 +6,9 @@ We were considering using a Google API for this.
 
 However, I did some more research about open source and offline alternatives. Here is a list of Python wrappers for tesseract: https://pypi.python.org/pypi?%3Aaction=search&term=tesseract&submit=search
 
-Tesseract OCR is licensed under Apache license, and returns bounding text and bounding boxes. The API is advanced, though, and written in C++(?)
+Tesseract OCR returns bounding text and bounding boxes. The API is advanced, though, and written in C++(?)
 
-tesseract-sip is a set of Python wrappers for Tesseract OCR. It depends on Tesseract. tesseract-sip also has an Apache license.
+tesseract-sip is a set of Python wrappers for Tesseract OCR. It depends on Tesseract. 
 
 https://pypi.python.org/pypi/tesseract_sip/0.1.1
 
