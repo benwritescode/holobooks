@@ -17,7 +17,12 @@ Build 3114
 =========================================================================================
 Unity (for editing, building, and running the Virtual Reality Holobooks client)
 
-Version 5.4.3f1 personal
+Version 5.5.1f1 personal
+
+https://unity3d.com/unity/whats-new/unity-5.5.1
+
+Download link below. (Scroll down to 5.5.1)
+https://unity3d.com/get-unity/download/archive?_ga=1.223013851.1743194796.1492291717
 
 =========================================================================================
 Python (for executing our client side script for voice to text)
@@ -49,6 +54,12 @@ git (for working with the Holobooks source repository)
 
 git --version
 git version 2.10.1 (Apple Git-78)
+
+=========================================================================================
+
+GitHub for Desktop
+
+Deer Types (222)
 
 =========================================================================================
 =========================================================================================
