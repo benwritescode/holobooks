@@ -1,0 +1,85 @@
+#!/bin/bash
+
+# Collect parameters values into human readable variables
+id="$1"
+filenamepath="$2"
+owner="$3"
+
+# check the ID
+if [ -z "$id" ]; then
+	echo "Parameter #1 must contain a database ID! Nothing has been received."
+	exit 0
+else
+	if ! (expr "$id" + 0  > /dev/null 2>&1 && [ "$id" -gt 0 ]); then
+		echo "Parameter #1 should be an integer!"
+		exit 0
+	fi
+fi
+
+# check the file
+if [ -z "$filenamepath" ]; then
+	echo "Parameter #2 should contain the full path and name of the PDF file to process! Nothing has been received."
+	exit 0
+else
+	if [ ! -f "$filenamepath" ]; then
+		echo "The specified file does not exist on the server, check the path and file name!"
+		exit 0
+	fi
+fi
+
+# check the owner
+if [ -z "$owner" ]; then
+	echo "Parameter #3 should contain the owner username of the generated files."
+	exit 0
+else
+	if ! id -u "$owner" >/dev/null 2>&1; then
+		echo "The given username does not exist in the system, check your data!"
+		exit 0
+	fi
+fi
+
+# All good, lets work
+
+# Set the filename and the filepath 
+filename=$(basename $filenamepath)
+filepath=${filenamepath%/*}
+
+# Give some feedback to the user
+echo "Starting working with the file $filename"
+
+# create directory if it does not exist
+if [ ! -d "$filepath/$id" ]; then
+	mkdir -p "$filepath/$id"
+	chown "$owner:$owner" "$filepath/$id"
+else
+	echo "The target directory already exists, stopping here!";
+	exit 1
+fi
+
+# copy the file into the target directory
+cp "$filenamepath" "$filepath/$id/$filename"
+chown "$owner:$owner" "$filepath/$id/$filename"
+
+# go to the target directory
+cd "$filepath/$id/"
+
+# convert the PDF pages into .ppm files
+pdftoppm "$filepath/$id/$filename" tmp
+
+# convert each .ppm file into a .jpg file
+# The .jpg files will have 800px of height with a proportional width
+# The .jpg files will have a quality of 80%
+ls -1 *.ppm | xargs -n 1 bash -c 'convert "$0" -resize x800 -quality 80% "${0%.*}.jpg"'
+
+chown "$owner:$owner" *
+
+# remove .ppm files
+rm -rf *.ppm
+
+# remove the .pdf file
+rm -rf "$filename"
+
+# Inform the user that the job is completed
+echo "All done!"
+
+exit 1
