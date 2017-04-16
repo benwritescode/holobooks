@@ -3,7 +3,7 @@ using System.Collections;
 
 using Configuration;
 
-public class SpeechToTextTester : MonoBehaviour
+public class SendEmailTester : MonoBehaviour
 {
 
 	SendEmailBehavior sendEmailBehavior;

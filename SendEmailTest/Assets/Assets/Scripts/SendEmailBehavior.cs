@@ -23,6 +23,8 @@ public class SendEmailBehavior : MonoBehaviour
 
 	public void SendEmail (string toAddress, string message)
 	{
+		Debug.Log ("SendEmailBehavior: SendEmail to " + toAddress + " : " + message);
+
 		// get username and password from config.cs
 		string username = Config.GetString ("gmail_username");
 		string password = Config.GetString ("gmail_password");
