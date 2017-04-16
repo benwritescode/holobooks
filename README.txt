@@ -38,4 +38,59 @@ Check for these results from nmap:
 "closed" == port opened by firewall, but no server application is bound to the port
 "open" == port opened by firewall, and a server application is bound to the port
 
+===================================================================
+
+Bonus:
+
+If you want to be able to connect to your server with SSH without typing your password, you can generate an SSH key and add it to your login on the server by following this tutorial:
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+
+===================================================================
+
+Bonus 2:
+
+If you want to be able to open C# files in MonoDevelop from the command line, add MonoDevelop to your path, by adding this line to your bash_profile:
+
+> # to open C# files with MonoDevelop from the command line. type 
+> # monodevelop open file.cs
+> export PATH="/Applications/Unity/MonoDevelop.app/Contents/MacOS:$PATH"
+
+Then, to open a C# file from the command line, type:
+
+> monodevelop myfile.cs
+
+===================================================================
+
+Bonus 3:
+
+Make a shorter alias for "monodevelop" (md), and switch focus to MonoDevelop simultaneously. Add these lines to your ~/.bash_profile:
+
+> # alias for opening files with MonoDevelop from terminal. Also switches application focus to MonoDevelop manually.
+>function md_function() {	
+>	# The below commented out line works, but it ultimately opens the file for editing under the binary named 'mono' inside of MonoDevelop instead of the main application 'MonoDevelop.app'. 
+>	# you can use the line below on Linux, but you'll probably have to switch application focus to 'mono' manually.
+>	# monodevelop $1 &
+	
+>	# I'm using osascript instead on Mac, because I can open the file in MonoDevelop, and switch focus.
+> # You also shouldn't need to have a "monodevelop" alias setup for this to work on Mac.
+>	osascript -e 'tell application "MonoDevelop" to open "'$PWD/$1'"'
+>	osascript -e 'activate application "MonoDevelop"'
+>}
+>alias md=md_function
+
+=====================================================================
+
+Bonus 4:
+
+If you want Sublime to have autocomplete for C# files, follow this tutorial. I haven't quite gotten OmniSharp to work with Sublime yet, though, so I'm currently using MonoDevelop on Mac. (see above)
+
+http://makegamessa.com/discussion/2879/tutorial-using-sublime-text-3-in-unity-with-intellisense-autocomplete
+Archives of the link: https://archive.fo/u7Wab, http://web.archive.org/web/20161006233039/http://makegamessa.com/discussion/2879/tutorial-using-sublime-text-3-in-unity-with-intellisense-autocomplete
+
+=====================================================================
+
+If you have trouble with anything in this README, please feel free to contact me (@benwritescode)
+
+=====================================================================
 
