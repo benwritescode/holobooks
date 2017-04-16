@@ -2,7 +2,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/API/Speech/SpeechToText.cs">
     <Files>
-      <File FileName="Assets/Scripts/API/Speech/SpeechToText.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/API/Multiplayer/SendMessageTester.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/API/Speech/SpeechToText.cs" Line="35" Column="3" />
+      <File FileName="Assets/Scripts/API/Speech/SpeechToTextTester.cs" Line="38" Column="1" />
+      <File FileName="Assets/Scripts/API/Helpers/Configuration.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/API/Helpers/SavWav.cs" Line="52" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
