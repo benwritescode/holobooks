@@ -34,7 +34,7 @@ public class SpeechToText : MonoBehaviour
 	{
 
 
-		string dataPath = Application.dataPath + "Scripts/API/Speech";
+		string dataPath = Application.dataPath + "/Scripts/API/Speech";
 
 		UnityEngine.Debug.Log ("SpeechToText: dataPath: " + dataPath);
 		string pythonPath = Config.PythonPath ();
@@ -92,6 +92,8 @@ public class SpeechToText : MonoBehaviour
 		} catch (Exception e) {
 
 			UnityEngine.Debug.Log ("SpeechToTextThread: conversion failed: " + e.ToString ());
+			UnityEngine.Debug.Log ("Python path: " + pythonPath);
+			UnityEngine.Debug.Log ("Data path: " + dataPath);
 
 
 		} finally {
