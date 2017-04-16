@@ -7,6 +7,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
 
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
+
 using Configuration;
 
 
@@ -68,9 +71,12 @@ public class SendEmailBehavior : MonoBehaviour
 		client.EnableSsl = true;
 		client.DeliveryMethod = SmtpDeliveryMethod.Network;
 		client.UseDefaultCredentials = false;
-
 		client.Credentials = (ICredentialsByHost)new NetworkCredential(username, password);
-		
+
+		ServicePointManager.ServerCertificateValidationCallback = delegate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) {
+			return true;
+		};
+
 		client.Send(mail);
 
 		// use C# APIs to send an email from the user’s provided gmail username.
