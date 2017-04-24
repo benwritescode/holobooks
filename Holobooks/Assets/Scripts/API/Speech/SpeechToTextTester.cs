@@ -18,12 +18,12 @@ public class SpeechToTextTester : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetKeyDown ("tab")) {
+		if (Input.GetKeyDown ("up")) {
 			clip = Microphone.Start (null, true, 60, 44100);
 
 		}
 
-		if (Input.GetKeyUp ("tab")) {
+		if (Input.GetKeyUp ("up")) {
 			Microphone.End (null);
 			mySpeechToText.ConvertClipToTextWithCallback (clip, this.RecognizedText);
 
