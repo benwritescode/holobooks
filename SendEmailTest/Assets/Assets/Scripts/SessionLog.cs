@@ -1,5 +1,8 @@
 using UnityEngine;
 using System;
+using System.Collections;
+
+using System.Net;
 using System.Collections.Generic;
 
 using Configuration;
@@ -12,16 +15,17 @@ public class SessionLog : MonoBehaviour
 	void Start () 
 	{
 		this.session = new List<BookReference>();
+		this.sendEmailBehavior = new SendEmailBehavior();
 	}
 
-	void update ()
+	void Update ()
 	{
 
 	}
 
 	public void appendReference(BookReference reference) 
 	{
-		this.session.Add(reference)
+		this.session.Add (reference);
 
 		Debug.Log ("New book reference added");
 	}
@@ -35,7 +39,7 @@ public class SessionLog : MonoBehaviour
 	public void sendSessionLog() {
 		string message = convertReferencesIntoText();
 
-		sendEmailBehvior.SendEmail (Config.GetString ("recipient_email"), message);
+		sendEmailBehavior.SendEmail (Config.GetString ("recipient_email"), message);
 
 	}
 
