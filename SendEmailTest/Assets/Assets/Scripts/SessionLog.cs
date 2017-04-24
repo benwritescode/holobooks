@@ -15,7 +15,7 @@ public class SessionLog : MonoBehaviour
 	void Start () 
 	{
 		this.session = new List<BookReference>();
-		this.sendEmailBehavior = new SendEmailBehavior();
+	
 	}
 
 	void Update ()
