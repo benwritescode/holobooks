@@ -22,6 +22,12 @@ One last step for Pocket Sphinx has to be manual: you need to add Pocket Sphinx 
   export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:$PKG_CONFIG_PATH
 
+There is one more thing you might need to configure. In config.json, you need to paste the path to your local Python binary. To do this, go to terminal on Linux or Mac, or PowerShell on Windows, and type:
+
+which python
+
+This will give you the path you need to put into config.json.
+
 # Install a voice chat client
 
 On the server side, we are using "Murmur," and open source server for voice chat. The corresponding client side application is called "Mumble." You should be able to install it fairly easily by visiting Mumble's download page. I was able to install it on Mac with their wizard in a few minutes. Visit the link below to download and install Murmur for your operating system:
