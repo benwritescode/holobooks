@@ -5,9 +5,9 @@ using UnityEngine;
 public class RightBookController : MonoBehaviour {
 	public  Page LeftPage;
 	public  Page RightPage;
-	private int LpageNum =1;
-	private int RpageNum =2;
-
+	private int LpageNum =0;
+	private int RpageNum =1;
+    private string volumeId;
 	private SteamVR_TrackedObject trackedObj;
 
 	private SteamVR_Controller.Device Controller{
@@ -16,8 +16,6 @@ public class RightBookController : MonoBehaviour {
 
 	void Awake(){
 		trackedObj = GetComponent<SteamVR_TrackedObject>();
-		LeftPage.changePage(1);
-		RightPage.changePage(2);
 	}
 	void Update () {
 
@@ -64,11 +62,11 @@ public class RightBookController : MonoBehaviour {
 	}
 
 	void turnPageToLeft(){
-		if(LpageNum!=1){
+		if(LpageNum!=0){
 			LpageNum-=2;
 			RpageNum-=2;
-			LeftPage.changePage(LpageNum);
-			RightPage.changePage(RpageNum);
+			LeftPage.changePage(LpageNum,volumeId);
+			RightPage.changePage(RpageNum,volumeId);
 		}
 	}
 
@@ -76,14 +74,15 @@ public class RightBookController : MonoBehaviour {
 		if(RpageNum!=14){
 			LpageNum+=2;
 			RpageNum+=2;
-			LeftPage.changePage(LpageNum);
-			RightPage.changePage(RpageNum);
+			LeftPage.changePage(LpageNum,volumeId);
+			RightPage.changePage(RpageNum,volumeId);
 		}
 	}
 
-	public void setPages(Page l, Page r){
+	public void setPages(Page l, Page r,string _volumeId){
 		LeftPage = l;
 		RightPage = r;
+        volumeId = _volumeId;
 	}
 
 

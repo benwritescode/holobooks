@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Page : MonoBehaviour {
 	
-	public void changePage(int number){
-//		Utils.applyMaterial(this, "n"+number.ToString());
+	public void changePage(int number, string volumeId){
+		Utils.applyMaterial(this, volumeId+"_"+number.ToString(),number);
 	}
 	// Use this for initialization
 	void Start () {
