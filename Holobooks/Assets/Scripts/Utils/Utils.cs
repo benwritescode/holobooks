@@ -46,13 +46,16 @@ public static class Utils{
 		list[index2] = temp;
 	}
 
-	public static void applyMaterial(Page gameObj, String filename)
+	public static void applyMaterial(Page gameObj, string volumeId,int pageNum)
 	{
 //		UnityEngine.Debug.Log(filename);
-		Material mat = Resources.Load(filename, typeof(Material)) as Material;
+	
+//		Material mat = Resources.Load(volumeId+"_"+pageNum, typeof(Texture)) as Material;
+		Texture2D txt = Resources.Load(volumeId+"_"+pageNum, typeof(Texture2D)) as Texture2D;
 		Renderer rend = gameObj.GetComponent<Renderer>();
 		if (rend != null){
-			rend.material = mat;
+			rend.material.mainTexture = txt;
+//			rend.material = mat;
 		}
 
 	}
@@ -84,6 +87,7 @@ public static class Utils{
 			code = process.ExitCode;
 			process.Dispose ();
 			process = null;
+			UnityEditor.AssetDatabase.Refresh ();
 
 //			callback ("" + output);
 

@@ -70,6 +70,8 @@
      <Compile Include="Assets\Scripts\Behaviors\BookObjectBehavior.cs" />
      <Compile Include="Assets\Scripts\Behaviors\EnvironmentSwapBehavior.cs" />
      <Compile Include="Assets\Scripts\Behaviors\TextDisplayBehavior.cs" />
+     <Compile Include="Assets\Scripts\Controls\BooObjVrController.cs" />
+     <Compile Include="Assets\Scripts\Controls\BookObjectManager.cs" />
      <Compile Include="Assets\Scripts\Controls\LeftBookController.cs" />
      <Compile Include="Assets\Scripts\Controls\RightBookController.cs" />
      <Compile Include="Assets\Scripts\Data\BookData.cs" />

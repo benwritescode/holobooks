@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 23634035400695816}
   - component: {fileID: 54663128972610204}
   - component: {fileID: 114765026893220946}
+  - component: {fileID: 114692659413704368}
   m_Layer: 0
   m_Name: Book
   m_TagString: Untagged
@@ -89,7 +90,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1512881175014720}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: -0.004000008, y: 1.602, z: -0.65197}
+  m_LocalPosition: {x: 2.9409804, y: 1.9516325, z: -0.65197}
   m_LocalScale: {x: 0.11408528, y: 0.6901321, z: 0.06978128}
   m_Children:
   - {fileID: 4618368663243852}
@@ -303,6 +304,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b9dbe9ce25b34d55b8fed7908e84527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114692659413704368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1512881175014720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe3d89bac10634ba28c777b67b6766cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lPage: {fileID: 114426512557580878}
+  rPage: {fileID: 114168951037464934}
+  volumeId: 
 --- !u!114 &114765026893220946
 MonoBehaviour:
   m_ObjectHideFlags: 1

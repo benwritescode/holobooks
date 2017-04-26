@@ -28,7 +28,7 @@ class DataAPI(object):
 
 
         url = "".join([self.baseurl, doc_type, '/', resource, '/', doc_id])
-        print(url)
+        # print(url)
         if sequence:
             url += '/' + str(sequence)
 
@@ -40,7 +40,7 @@ class DataAPI(object):
 
         r = self.rsession.get(url, params=params)
         r.raise_for_status()
-
+        # print r.url
         return r.content
 
     def getdocumentocr(self, doc_id, start_page=1, end_page=1e5, doc_type='volume'):
@@ -55,7 +55,7 @@ class DataAPI(object):
                 break
         return outPages
 
-    def getdocumentimage(self, doc_id, start_page = 1, end_page = 1e5 , doc_type = 'volume'):
+    def getdocumentimage(self, doc_id, start_page = 1, end_page = 5 , doc_type = 'volume'):
         """  Get image for an entire document.
         Return:
             List of UTF-8 encoded OCR plain text from start_page to end_page (or entire work if no bounds provided)
@@ -64,6 +64,7 @@ class DataAPI(object):
         i = start_page
         while (i <= end_page):
             try:
+                print(i)
                 outPages.append(self.getpageimage(doc_id, i, doc_type=doc_type))
                 i += 1
             except:
@@ -92,16 +93,11 @@ class DataAPI(object):
 
 
 data_api = DataAPI("210c9e0e03","7606c62ba9157d5d66f541b044b0")
-# image= data_api.getpageocr('coo.31924069448102', 44)
-# print sys.argv[1]
-image= data_api.getpageimage(str(sys.argv[1]), 1)
-# image= data_api.getpageimage('hvd.32044020104550', 1)
-# f1= open("filename","w+")
-# f1.write("hello")
-# f1.write(str(sys.argv[1]))
+images= data_api.getdocumentimage(str(sys.argv[1]))
+i=0
+for img in images:
+    f = open(str(sys.argv[1])+'_'+str(i)+'.jpg', 'wb')
+    f.write(img)
+    f.close()
+    i=i+1
 
-# image = data_api.getpageimage('nyp.33433082228226',1)
-f = open('333.jpg','wb')
-f.write(image)
-f.close()
-#print image

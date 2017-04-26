@@ -364,6 +364,7 @@ MonoBehaviour:
   author: {fileID: 114669676812038948}
   volumeId: 
   downloadBtn: {fileID: 114459743874364756}
+  BookObj: {fileID: 1512881175014720, guid: eeb6c74266c8c4f3680606bdbd6c33ff, type: 2}
 --- !u!114 &114891051119176622
 MonoBehaviour:
   m_ObjectHideFlags: 1

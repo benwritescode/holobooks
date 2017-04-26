@@ -9,15 +9,15 @@ public class BookSearchResultManager : MonoBehaviour {
 	private List<GameObject> itemList;
 	// Use this for initialization
 	void Start () {
-		bookList = Utils.runSearchScript ("Catcher in the Rye", "title");
-		populateMenu (bookList);
+//		bookList = Utils.runSearchScript ("Catcher in the Rye", "title");
+//		populateMenu (bookList);
 	}
 
 	public void populateMenu(List<BookReference> li){
 		for (int i = 0; i < li.Count; i++) {
 			GameObject go = Instantiate(bookSearchResult);
 			go.transform.parent = transform;
-			itemList.Add (go);
+//			itemList.Add (go);
 			BookSearchItemManager bookItem = go.GetComponent<BookSearchItemManager> ();
 			bookItem.setItem (li[i].titles[0], li[i].authors[0], li[i].id);
 		}

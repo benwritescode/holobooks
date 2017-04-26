@@ -8,6 +8,7 @@ public class BookSearchItemManager : MonoBehaviour {
 	public Text author;
 	public string volumeId;
 	public Button downloadBtn;
+	public GameObject BookObj;
 	// Use this for initialization
 	void Start () {
 		downloadBtn.onClick.AddListener(DownloadBook);
@@ -17,8 +18,15 @@ public class BookSearchItemManager : MonoBehaviour {
 	public void DownloadBook(){
 		Debug.Log (volumeId);
 		Utils.runDownloadScript (volumeId);
+		CreateBook (volumeId);
 	}
 
+	public void CreateBook(string _volumeId){
+		GameObject bobj = Instantiate (BookObj);
+		BookObjectManager book = bobj.GetComponent<BookObjectManager> ();
+		book.populateBook (_volumeId);
+
+	}
 	public void setItem(string _title, string _author, string _volumeId){
 		title.text = _title;
 		author.text = _author;
