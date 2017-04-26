@@ -18,10 +18,18 @@ using Configuration;
 
 public class SpeechToText : MonoBehaviour
 {
+	public static SpeechToText instance;
 
 	// Here is the delegate type for returning the text result.
 	public delegate void SpeechToTextCallback (string text);
 
+
+	void Awake(){
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			return;  
+	}
 	// Use this for initialization
 	void Start ()
 	{

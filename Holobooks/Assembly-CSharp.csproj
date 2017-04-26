@@ -78,6 +78,7 @@
      <Compile Include="Assets\Scripts\Data\PageData.cs" />
      <Compile Include="Assets\Scripts\UI\BookSearchItemManager.cs" />
      <Compile Include="Assets\Scripts\UI\BookSearchResultManager.cs" />
+     <Compile Include="Assets\Scripts\UI\DownloadMenuControlScript.cs" />
      <Compile Include="Assets\Scripts\Utils\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\Utils\ParserSpace.cs" />
      <Compile Include="Assets\Scripts\Utils\ParserTester.cs" />

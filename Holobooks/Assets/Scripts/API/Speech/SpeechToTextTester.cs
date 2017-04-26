@@ -12,7 +12,7 @@ public class SpeechToTextTester : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		mySpeechToText = GameObject.FindObjectOfType<SpeechToText> ();
+		mySpeechToText = SpeechToText.instance;
 	}
 
 	// Update is called once per frame
