@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ViveRightController
+  - ViveLeftController
   layers:
   - Default
   - TransparentFX

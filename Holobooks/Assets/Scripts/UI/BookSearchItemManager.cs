@@ -8,6 +8,7 @@ public class BookSearchItemManager : MonoBehaviour {
 	public Text author;
 	public string volumeId;
 	public Button downloadBtn;
+    public Button sendBtn;
 	public GameObject BookObj;
 	// Use this for initialization
 	void Start () {
@@ -27,9 +28,15 @@ public class BookSearchItemManager : MonoBehaviour {
 		book.populateBook (_volumeId);
 
 	}
+
+    public void SendBook()
+    {
+        //send
+    }
 	public void setItem(string _title, string _author, string _volumeId){
 		title.text = _title;
 		author.text = _author;
 		volumeId = _volumeId;
-	}
+        sendBtn.onClick.AddListener(SendBook);
+    }
 }
