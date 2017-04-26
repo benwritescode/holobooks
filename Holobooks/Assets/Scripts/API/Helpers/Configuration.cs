@@ -121,8 +121,7 @@ namespace Configuration
 			} catch (Exception e) {
 				Debug.LogWarning ("Unable to get Python path from config directory. Did you set the OS and the path for the OS in config.json?");
 			}
-
-			return "/usr/bin/python";
+            return "C:\\Python27\\python";
 
 		}
 

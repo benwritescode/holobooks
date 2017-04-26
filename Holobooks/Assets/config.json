@@ -1,10 +1,9 @@
 {
 	"ip":"45.56.115.75",
-	"port":"5556",
+	"port":5556,
 	"_OS_comment":"OS options are: mac, linux, windows",
 	"OS":"mac", 
-	"mac_python_path":"/my_usr/bin/python",
-	"linux_python_path":"/my_usr/bin/python",
-	"windows_python_path":"c:\Python27\python"
+	"mac_python_path":"/usr/bin/python",
+	"linux_python_path":"/usr/bin/python",
+	"windows_python_path":"C:\\Python27\\python"
 }
-

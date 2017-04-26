@@ -56,7 +56,10 @@ namespace ParserSpace
 		{
 			string mystring = "";
 			try {
-				string path = Application.dataPath + "/Resources/" + name;
+                string path = "C:/Users/admin/Documents/nathan/holobooks/Holobooks/Assets/Resources/" + name;
+
+
+                //string path = Application.dataPath + "/Resources/" + name;
 				mystring = File.ReadAllText (path);
 
 			} catch (Exception e) {

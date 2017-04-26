@@ -36,6 +36,7 @@ public class LeftBookController : MonoBehaviour {
 		}
 
 		if(Controller.GetPressUp(SteamVR_Controller.ButtonMask.Axis0)){
+            Debug.Log("HELLOOOO");
 			Microphone.End (null);
 			mySpeechToText.ConvertClipToTextWithCallback (clip, this.RecognizedText);
 		}
@@ -43,6 +44,7 @@ public class LeftBookController : MonoBehaviour {
 
 		if (Controller.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
 		{
+            Debug.Log("PRESS");
 			if(gameObject.name.Contains("right")){
 				zoomBookOut ();
 			}else{

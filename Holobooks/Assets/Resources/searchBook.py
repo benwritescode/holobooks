@@ -128,8 +128,13 @@ if __name__ == "__main__":
 
 
 solr = SolrAPI()
+f = open('hello.txt', 'wb')
+f.write("HELLO")
+#f.write(str(sys.argv[1]))
+#f.write(str(sys.argv[2]))
+f.close()
 # results = solr.query("Catcher in the Rye", fields=["title"])
-results = solr.query(sys.argv[1], fields=[sys.argv[2]])
+results = solr.query(str(sys.argv[1]), fields=[str(sys.argv[2])])
 print results
 
 with io.open('data.json', 'w', encoding='utf-8') as f:
