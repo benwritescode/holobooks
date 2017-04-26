@@ -28,6 +28,9 @@ public class BookObjectManager : MonoBehaviour {
 
 	private void ObjectGrabbed(object sender, InteractableObjectEventArgs e){
 		Debug.Log("Im Grabbed");
+		GameObject rightController = GameObject.FindGameObjectWithTag ("ViveRightController");
+		RightBookController rc = rightController.GetComponent<RightBookController> ();
+		rc.setPages (lPage, rPage);
 	}
 
 }
