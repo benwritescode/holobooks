@@ -93,7 +93,7 @@ public class SpeechToText : MonoBehaviour
 
 		string dataPath = Application.dataPath + "/Scripts/API/Speech";
 
-		UnityEngine.Debug.Log ("SpeechToText: dataPath: " + dataPath);
+//		UnityEngine.Debug.Log ("SpeechToText: dataPath: " + dataPath);
 		string pythonPath = Config.PythonPath ();
 
 		// save the audio clip as a .wav file
@@ -140,8 +140,8 @@ public class SpeechToText : MonoBehaviour
 
 		process.StartInfo.WorkingDirectory = dataPath;
 
-		UnityEngine.Debug.Log ("pythonpath: " + pythonPath);
-		UnityEngine.Debug.Log ("dataPath: " + dataPath);
+//		UnityEngine.Debug.Log ("pythonpath: " + pythonPath);
+//		UnityEngine.Debug.Log ("dataPath: " + dataPath);
 
 		int code = -2;
 		string output = "";
