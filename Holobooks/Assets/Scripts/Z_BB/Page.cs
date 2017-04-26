@@ -4,7 +4,6 @@ using System.Collections;
 public class Page : MonoBehaviour {
 	
 	public void changePage(int number){
-		
 		Utils.applyMaterial(this, "n"+number.ToString());
 	}
 	// Use this for initialization

@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class BookSearchResultManager : MonoBehaviour {
 	public GameObject bookSearchResult;
-
+	public List<BookReference> bookList;
 	// Use this for initialization
 	void Start () {
-
-
-		for(int i =0 ; i<8;i++){
-			GameObject go = Instantiate(bookSearchResult);
-			go.transform.parent = transform;
-			BookSearchItemManager bookItem = go.GetComponent<BookSearchItemManager> ();
-			bookItem.setItem ("Title", "AUthor", "nyp.33433082228226");
-		}
+		bookList = Utils.runSearchScript ("Catcher in the Rye", "title");
+		populateMenu (bookList);
 	}
 
 	public void populateMenu(List<BookReference> li){
@@ -22,7 +16,7 @@ public class BookSearchResultManager : MonoBehaviour {
 			GameObject go = Instantiate(bookSearchResult);
 			go.transform.parent = transform;
 			BookSearchItemManager bookItem = go.GetComponent<BookSearchItemManager> ();
-			bookItem.setItem (li[i].title, li[i].author, li[i].title);
+			bookItem.setItem (li[i].titles[0], li[i].authors[0], li[i].id);
 		}
 	}
 		

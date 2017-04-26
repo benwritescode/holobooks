@@ -22,43 +22,43 @@ using System;
 public class BookData
 {
 	
-	public BookReference reference;
-	private Dictionary<int, PageData> pageDatas = new Dictionary<int, PageData> ();
-
-
-	// test book data
-	public BookData ()
-	{
-		this.reference = new BookReference ("Mobydick");
-		PageData mobydickpage1 = new PageData ("");
-
-		this.pageDatas.Add (0, mobydickpage1);
-
-	}
-
-	public BookData (BookReference nReference)
-	{
-
-		this.reference = nReference;
-
-
-
-	}
-
-	// Takes in a pageNumber, and a callback. The callback's one and only argument is a PageData.
-	// When get page is finished, it will call the lambda, "Action(PageData)" to return the requested page data to the caller.
-
-	public void GetPageAndReturnWithCallback (int pageNumber, Action<PageData> action)
-	{
-		if (pageDatas.ContainsKey (pageNumber)) {
-			action (pageDatas [pageNumber]);
-
-		} else {
-			// Call the book/library API with a new callback
-			// our own callback will store the new page data
-			// and then it will return the page data to action.
-		}
-	}
+//	public BookReference reference;
+//	private Dictionary<int, PageData> pageDatas = new Dictionary<int, PageData> ();
+//
+//
+//	// test book data
+//	public BookData ()
+//	{
+//		this.reference = new BookReference ("Mobydick");
+//		PageData mobydickpage1 = new PageData ("");
+//
+//		this.pageDatas.Add (0, mobydickpage1);
+//
+//	}
+//
+//	public BookData (BookReference nReference)
+//	{
+//
+//		this.reference = nReference;
+//
+//
+//
+//	}
+//
+//	// Takes in a pageNumber, and a callback. The callback's one and only argument is a PageData.
+//	// When get page is finished, it will call the lambda, "Action(PageData)" to return the requested page data to the caller.
+//
+//	public void GetPageAndReturnWithCallback (int pageNumber, Action<PageData> action)
+//	{
+//		if (pageDatas.ContainsKey (pageNumber)) {
+//			action (pageDatas [pageNumber]);
+//
+//		} else {
+//			// Call the book/library API with a new callback
+//			// our own callback will store the new page data
+//			// and then it will return the page data to action.
+//		}
+//	}
 
 
 }

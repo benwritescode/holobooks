@@ -60,11 +60,7 @@
      <Compile Include="Assets\Scripts\API\API.cs" />
      <Compile Include="Assets\Scripts\API\DataAPI.cs" />
      <Compile Include="Assets\Scripts\API\Helpers\Configuration.cs" />
-     <Compile Include="Assets\Scripts\API\Helpers\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\API\Helpers\SavWav.cs" />
-     <Compile Include="Assets\Scripts\API\JSON\JSONObject.cs" />
-     <Compile Include="Assets\Scripts\API\JSON\JSONTemplates.cs" />
-     <Compile Include="Assets\Scripts\API\JSON\VectorTemplates.cs" />
      <Compile Include="Assets\Scripts\API\Multiplayer\ClientBehavior.cs" />
      <Compile Include="Assets\Scripts\API\Multiplayer\SendMessageTester.cs" />
      <Compile Include="Assets\Scripts\API\OAuth.cs" />
@@ -77,7 +73,10 @@
      <Compile Include="Assets\Scripts\Data\BookData.cs" />
      <Compile Include="Assets\Scripts\Data\BookReference.cs" />
      <Compile Include="Assets\Scripts\Data\EnvironmentType.cs" />
+     <Compile Include="Assets\Scripts\Data\MiniJSON.cs" />
      <Compile Include="Assets\Scripts\Data\PageData.cs" />
+     <Compile Include="Assets\Scripts\Data\ParserSpace.cs" />
+     <Compile Include="Assets\Scripts\Data\ParserTester.cs" />
      <Compile Include="Assets\Scripts\UI\BookSearchItemManager.cs" />
      <Compile Include="Assets\Scripts\UI\BookSearchResultManager.cs" />
      <Compile Include="Assets\Scripts\Z_BB\LeftBookController.cs" />
@@ -364,7 +363,6 @@
      <Compile Include="Assets\VRTK\Scripts\Utilities\VRTK_Simulator.cs" />
      <None Include="Assets\VRTK\Version.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
-     <None Include="Assets\Scripts\API\JSON\readme.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
      <None Include="Assets\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />

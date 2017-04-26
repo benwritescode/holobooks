@@ -49,7 +49,6 @@
      <Compile Include="Assets\Customizable_Furnture\Editor\Customizable_Furniture\EditorCleanUpAll.cs" />
      <Compile Include="Assets\Customizable_Furnture\Editor\Customizable_Furniture\EditorOptionsDisplay.cs" />
      <Compile Include="Assets\Customizable_Furnture\Editor\Customizable_Furniture\EditorSimpleSwitchMaterial.cs" />
-     <Compile Include="Assets\Scripts\API\JSON\Editor\JSONChecker.cs" />
      <Compile Include="Assets\SteamVR\Editor\SteamVR_Editor.cs" />
      <Compile Include="Assets\SteamVR\Editor\SteamVR_Preferences.cs" />
      <Compile Include="Assets\SteamVR\Editor\SteamVR_RenderModelEditor.cs" />
@@ -64,7 +63,6 @@
      <Compile Include="Assets\VRTK\Scripts\Controls\2D\RadialMenu\Editor\RadialMenuInspector.cs" />
      <None Include="Assets\VRTK\Version.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
-     <None Include="Assets\Scripts\API\JSON\readme.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
      <None Include="Assets\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />

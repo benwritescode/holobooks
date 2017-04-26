@@ -95,12 +95,13 @@ data_api = DataAPI("210c9e0e03","7606c62ba9157d5d66f541b044b0")
 # image= data_api.getpageocr('coo.31924069448102', 44)
 # print sys.argv[1]
 image= data_api.getpageimage(str(sys.argv[1]), 1)
+# image= data_api.getpageimage('hvd.32044020104550', 1)
 # f1= open("filename","w+")
 # f1.write("hello")
 # f1.write(str(sys.argv[1]))
 
 # image = data_api.getpageimage('nyp.33433082228226',1)
-f = open('image223.jpg','wb')
+f = open('333.jpg','wb')
 f.write(image)
 f.close()
 #print image

@@ -132,7 +132,7 @@ solr = SolrAPI()
 results = solr.query(sys.argv[1], fields=[sys.argv[2]])
 print results
 
-with io.open('data.txt', 'w', encoding='utf-8') as f:
+with io.open('data.json', 'w', encoding='utf-8') as f:
   f.write(json.dumps(results, ensure_ascii=False))
 # with open('searchResult.txt', 'w') as outfile:
 #     json.dump(results, outfile)

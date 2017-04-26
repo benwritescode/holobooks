@@ -15,6 +15,7 @@ public class BookSearchItemManager : MonoBehaviour {
 	
 
 	public void DownloadBook(){
+		Debug.Log (volumeId);
 		Utils.runDownloadScript (volumeId);
 	}
 

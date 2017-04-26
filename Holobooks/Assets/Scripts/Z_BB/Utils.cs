@@ -84,13 +84,14 @@ public static class Utils{
 			code = process.ExitCode;
 			process.Dispose ();
 			process = null;
+
 //			callback ("" + output);
 
 		}
 //
 	}
 
-	public static void runSearchScript(string keyword, string queryType){
+	public static List<BookReference> runSearchScript(string keyword, string queryType){
 
 
 		Process process = new Process ();
@@ -103,7 +104,7 @@ public static class Utils{
 
 		process.StartInfo.WorkingDirectory =  Application.dataPath + "/Resources/";
 
-
+		List<BookReference> list;
 		int code = -2;
 		string output = "";
 
@@ -119,10 +120,12 @@ public static class Utils{
 			code = process.ExitCode;
 			process.Dispose ();
 			process = null;
-			//			callback ("" + output);
+			string jsonToParse = ParserSpace.BookReferenceParser.GetJsonNamed ("data.json");
+			list = ParserSpace.BookReferenceParser.ParseResponseToReferences (jsonToParse, true);
 
 		}
-		//
+		return list;
+
 	}
 
 }
