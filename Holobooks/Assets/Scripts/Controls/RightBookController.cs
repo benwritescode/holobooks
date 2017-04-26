@@ -81,6 +81,10 @@ public class RightBookController : MonoBehaviour {
 		}
 	}
 
+	public void setPages(Page l, Page r){
+		LeftPage = l;
+		RightPage = r;
+	}
 
 
 }
