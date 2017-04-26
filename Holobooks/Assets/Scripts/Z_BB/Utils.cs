@@ -56,16 +56,15 @@ public static class Utils{
 		}
 
 	}
-	public static void runDownloadScript(String scriptPath, String args){
+	public static void runDownloadScript(string volumeId){
 
 
 		Process process = new Process ();
-//		process.StartInfo.FileName = "python";
 		process.StartInfo.CreateNoWindow = true;
 		process.StartInfo.UseShellExecute = false;
 		process.StartInfo.RedirectStandardOutput = true;
 		process.StartInfo.FileName = Config.PythonPath();
-		process.StartInfo.Arguments = "downloadBook.py "+ "args";
+		process.StartInfo.Arguments = "downloadBook.py "+ volumeId;
 
 		process.StartInfo.WorkingDirectory =  Application.dataPath + "/Resources/";
 
@@ -91,7 +90,7 @@ public static class Utils{
 //
 	}
 
-	public static void runDownloadScript(String scriptPath, String args){
+	public static void runSearchScript(string keyword, string queryType){
 
 
 		Process process = new Process ();
@@ -100,7 +99,7 @@ public static class Utils{
 		process.StartInfo.UseShellExecute = false;
 		process.StartInfo.RedirectStandardOutput = true;
 		process.StartInfo.FileName = Config.PythonPath();
-		process.StartInfo.Arguments = "searchBook.py "+ "args";
+		process.StartInfo.Arguments = "searchBook.py " + keyword + " " + queryType;
 
 		process.StartInfo.WorkingDirectory =  Application.dataPath + "/Resources/";
 

@@ -11,8 +11,8 @@ public class testScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-
-		Utils.runScript(Config.PythonPath(),"downloadBook.sh");
+		Utils.runSearchScript ("Catcher in the Rye", "title");
+//		Utils.runScript(Config.PythonPath(),"downloadBook.sh");
 
 
 

@@ -78,6 +78,8 @@
      <Compile Include="Assets\Scripts\Data\BookReference.cs" />
      <Compile Include="Assets\Scripts\Data\EnvironmentType.cs" />
      <Compile Include="Assets\Scripts\Data\PageData.cs" />
+     <Compile Include="Assets\Scripts\UI\BookSearchItemManager.cs" />
+     <Compile Include="Assets\Scripts\UI\BookSearchResultManager.cs" />
      <Compile Include="Assets\Scripts\Z_BB\LeftBookController.cs" />
      <Compile Include="Assets\Scripts\Z_BB\Page.cs" />
      <Compile Include="Assets\Scripts\Z_BB\RightBookController.cs" />
@@ -379,6 +381,7 @@
      <None Include="Assets\VRTK\Scripts\Internal\Shaders\Unlit_TransparentColor.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
+     <None Include="Assets\Resources\searchResult.txt" />
      <None Include="Assets\SteamVR\InteractionSystem\Readme_InteractionSystem.txt" />
  <Reference Include="UnityEngine.Analytics">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
