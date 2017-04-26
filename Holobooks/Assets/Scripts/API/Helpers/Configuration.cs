@@ -123,7 +123,7 @@ namespace Configuration
 				Debug.LogWarning ("Unable to get Python path from config directory. Did you set the OS and the path for the OS in config.json?");
 			}
 
-			return path;
+			return "/usr/bin/python";
 
 		}
 

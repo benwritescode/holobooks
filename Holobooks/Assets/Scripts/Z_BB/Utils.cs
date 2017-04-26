@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Diagnostics;
+using Configuration;
 
 
 public static class Utils{
@@ -55,20 +56,73 @@ public static class Utils{
 		}
 
 	}
-	public static void runScript(String scriptPath, String args){
+	public static void runDownloadScript(string volumeId){
 
-		ProcessStartInfo startInfo = new ProcessStartInfo()
-		{
-			FileName = scriptPath,
-			Arguments = args,
-		};
-		Process proc = new Process()
-		{
-			StartInfo = startInfo,
-		};
 
-		proc.Start();
+		Process process = new Process ();
+		process.StartInfo.CreateNoWindow = true;
+		process.StartInfo.UseShellExecute = false;
+		process.StartInfo.RedirectStandardOutput = true;
+		process.StartInfo.FileName = Config.PythonPath();
+		process.StartInfo.Arguments = "downloadBook.py "+ volumeId;
 
+		process.StartInfo.WorkingDirectory =  Application.dataPath + "/Resources/";
+
+
+		int code = -2;
+		string output = "";
+
+		try {
+			process.Start ();
+			output = process.StandardOutput.ReadToEnd ();
+			process.WaitForExit ();
+
+
+		} catch (Exception e) {
+			UnityEngine.Debug.Log ("Download Fail");
+		} finally {
+			code = process.ExitCode;
+			process.Dispose ();
+			process = null;
+//			callback ("" + output);
+
+		}
+//
+	}
+
+	public static void runSearchScript(string keyword, string queryType){
+
+
+		Process process = new Process ();
+		//		process.StartInfo.FileName = "python";
+		process.StartInfo.CreateNoWindow = true;
+		process.StartInfo.UseShellExecute = false;
+		process.StartInfo.RedirectStandardOutput = true;
+		process.StartInfo.FileName = Config.PythonPath();
+		process.StartInfo.Arguments = "searchBook.py " + keyword + " " + queryType;
+
+		process.StartInfo.WorkingDirectory =  Application.dataPath + "/Resources/";
+
+
+		int code = -2;
+		string output = "";
+
+		try {
+			process.Start ();
+			output = process.StandardOutput.ReadToEnd ();
+			process.WaitForExit ();
+
+
+		} catch (Exception e) {
+			UnityEngine.Debug.Log ("Download Fail");
+		} finally {
+			code = process.ExitCode;
+			process.Dispose ();
+			process = null;
+			//			callback ("" + output);
+
+		}
+		//
 	}
 
 }

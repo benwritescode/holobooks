@@ -42,7 +42,6 @@ public class SpeechToText : MonoBehaviour
 		// save the audio clip as a .wav file
 		SavWav.Save (dataPath, "clip", clip);
 
-
 		// Start a new thread to translate the speech into text
 		// We have to call an outside process. Since the process can require indeterminate time, 
 		// we don't want to wait for it on the main thread (which would cause a graphical freeze)

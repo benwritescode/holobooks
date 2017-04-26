@@ -7,7 +7,6 @@ cwd = os.getcwd()
 audioFile = cwd+"/clip.wav"
 
 
-
 import speech_recognition as sr
 
 # from os import path
