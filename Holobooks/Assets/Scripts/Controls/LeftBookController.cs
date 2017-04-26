@@ -66,15 +66,20 @@ public class LeftBookController : MonoBehaviour {
 		book.transform.Translate (trans* 1 * Time.deltaTime);
 	}
 
-		
-	void RecognizedText (string text)
-	{
-		Debug.Log ("SpeechToText output: " + text);
-		List<BookReference> li = Utils.runSearchScript (text, "title");
-		downloadMenu.SetActive (true);
-		searchMenu.populateMenu (li);
 
-	}
+    void RecognizedText(string text)
+    {
+        Debug.Log("SpeechToText output: " + text);
+        List<BookReference> li = Utils.runSearchScript(text, "title");
+        downloadMenu.SetActive(true);
+        searchMenu.populateMenu(li);
+
+    }
+
+    public void setBook(GameObject b)
+    {
+        book = b;
+    }
 	void zoomBookIn(){
 	}
 
