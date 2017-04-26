@@ -96,11 +96,12 @@ jsontest.exe: tests/jsontest/jsontest/Program.cs
 	wget https://github.com/mumble-voip/mumble/archive/master.zip
 	unzip master.zip -d mumble
 
+	# this isn't necessary anymore.
 	# checkout stable 1.2.x ...
-	cd mumble/mumble-master \
-	&& git submodule init \
-	&& git submodule update \
-	&& git pull
+	#cd mumble/mumble-master \
+	#&& git submodule init \
+	#&& git submodule update \
+	#&& git pull
 
 
 	# build it with qmake and make. Don't build the client. (this is on the server only anyway.)
