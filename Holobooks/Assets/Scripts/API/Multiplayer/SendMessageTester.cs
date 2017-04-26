@@ -27,7 +27,7 @@ public class MessageObject
 // This class can simply grab the client behavior, register as a delegate, and then start sending and receiving (serialized) JSON strings.
 public class SendMessageTester : MonoBehaviour
 {
-
+    public GameObject menu;
 	ClientBehavior myclientbehavior;
 
 	// Use this for initialization
@@ -57,7 +57,7 @@ public class SendMessageTester : MonoBehaviour
 
 	void ReceivedStringMessage (string message)
 	{
-
+        menu.SetActive(true);
 		Debug.Log ("attempting to convert json string: " + message);
 		// Convert from JSON back into struct type
 		MessageObject some_object = JsonUtility.FromJson<MessageObject> (message);
