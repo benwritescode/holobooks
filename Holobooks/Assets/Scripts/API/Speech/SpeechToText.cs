@@ -24,7 +24,22 @@ public class SpeechToText : MonoBehaviour
 	public delegate void SpeechToTextCallback (string text);
 
 
-	void Awake(){
+	// currentlyProcessingSpeech bool allows us to avoid locking a mutex
+	// *unless* we're in the middle of processing speech.
+	private bool currentlyProcessingSpeech;
+
+	// ============= MUTEX ONLY VARIABLES - only access these inside of lock(mutex) {}
+	// mutex in order to manage *only* returning text on the main thread.
+	private readonly object mutex = new object ();
+	// If the output is ready, we call the mainCallback
+	private bool outputReady = false;
+	private SpeechToTextCallback mainCallback;
+	// the text we got from speech recognition. Call mainCallback with this text.
+	private string finalSpeechText = "";
+	// ============= MUTEX ONLY VARIABLES END
+
+	void Awake ()
+	{
 		if (instance == null)
 			instance = this;
 		else if (instance != this)
@@ -35,6 +50,40 @@ public class SpeechToText : MonoBehaviour
 	{
 
 
+
+	}
+
+	
+
+	// reset all mutex-only variables.
+	private void ResetMutexVariables (SpeechToTextCallback callback = null)
+	{
+		lock (mutex) {
+			outputReady = false;
+			mainCallback = callback;
+			finalSpeechText = "";
+		}
+	}
+
+	// this function locks the mutex, and returns the speech recognized text if it's ready.
+	// The reason we only call the callback on the main thread is because some System/Unity functions can only be called on main thread
+	// Before, I was calling the callback on my secondary thread. But this had the side effect of running the caller's callback not on main thread
+	// That can cause errors.
+	// this fix prevents those errors by making sure that anyone who uses this class is assured that their own code is always run
+	// on the primary thread.
+	private void ReturnTextOutputIfReady ()
+	{
+		
+		// lock on the mutex to avoid race condition with speech recognition thread
+		lock (mutex) {
+			// if output is ready, return it to our client
+			if (outputReady) {
+				mainCallback (finalSpeechText);
+				// don't return the text more than once, and stop.
+				outputReady = false;
+				currentlyProcessingSpeech = false;
+			}
+		}
 
 	}
 
@@ -55,7 +104,13 @@ public class SpeechToText : MonoBehaviour
 		// we don't want to wait for it on the main thread (which would cause a graphical freeze)
 		// instead, we offload this work to a new thread.
 		// when that new thread is completed, it will call the client's provided callback, along with the recognized speech.
-		Thread newThread = new Thread (new ThreadStart (() => this.SpeechToTextThread (clip, callback, dataPath, pythonPath)));
+
+		currentlyProcessingSpeech = true;
+
+		// reset mutex variables.
+		this.ResetMutexVariables (callback);
+
+		Thread newThread = new Thread (new ThreadStart (() => this.SpeechToTextThread (clip, dataPath, pythonPath)));
 		newThread.Start ();
 
 	}
@@ -63,11 +118,13 @@ public class SpeechToText : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		if (currentlyProcessingSpeech) {
+			this.ReturnTextOutputIfReady ();
+		}
 	}
 
 
-	void SpeechToTextThread (AudioClip clip, SpeechToTextCallback callback, string dataPath, string pythonPath)
+	void SpeechToTextThread (AudioClip clip, string dataPath, string pythonPath)
 	{
 		Process process = new Process ();
 
@@ -83,6 +140,8 @@ public class SpeechToText : MonoBehaviour
 
 		process.StartInfo.WorkingDirectory = dataPath;
 
+		UnityEngine.Debug.Log ("pythonpath: " + pythonPath);
+		UnityEngine.Debug.Log ("dataPath: " + dataPath);
 
 		int code = -2;
 		string output = "";
@@ -94,7 +153,7 @@ public class SpeechToText : MonoBehaviour
 
 			// wait until completion, and then call the callback
 			process.WaitForExit ();
-
+//			output = "o wow";
 
 		} catch (Exception e) {
 
@@ -105,10 +164,20 @@ public class SpeechToText : MonoBehaviour
 
 		} finally {
 			code = process.ExitCode;
+
 			process.Dispose ();
 			process = null;
 
-			callback ("" + output);
+			// when we're done, lock the mutex
+			// indicate the output is ready for consuming
+
+			lock (mutex) {
+				outputReady = true;
+
+				finalSpeechText = output;
+
+			}
+
 
 		}
 
