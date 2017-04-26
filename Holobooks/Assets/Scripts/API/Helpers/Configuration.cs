@@ -63,10 +63,9 @@ namespace Configuration
 			IDictionary dict = Config.GetConfigDictionary ();
 
 			int value = optional_default;
-
 			try {
 				if (dict.Contains (key)) {
-					value = (int)dict [key];
+					value =Convert.ToInt32(dict[key]);
 				} else {
 					Debug.LogWarning ("Missing value for key \"" + key + "\" from config dictionary. Did you set it in config.json?");
 					value = optional_default;
