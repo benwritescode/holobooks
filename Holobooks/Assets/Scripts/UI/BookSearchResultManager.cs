@@ -19,7 +19,7 @@ public class BookSearchResultManager : MonoBehaviour {
 			go.transform.parent = transform;
 //			itemList.Add (go);
 			BookSearchItemManager bookItem = go.GetComponent<BookSearchItemManager> ();
-			bookItem.setItem (li[i].titles[0], li[i].authors[0], li[i].id);
+			bookItem.setItem (li[i].titles[0], li[i].authors[0], li[i].id, li[i]);
 		}
 	}
 
@@ -27,6 +27,13 @@ public class BookSearchResultManager : MonoBehaviour {
 		for (int i = 0; i < itemList.Count; i++) {
 			Destroy (itemList [i]);
 		}
+	}
+
+	public void createSentObj(BookReference obj){
+		GameObject go = Instantiate(bookSearchResult);
+		go.transform.parent = transform;
+		BookSearchItemManager bookItem = go.GetComponent<BookSearchItemManager> ();
+		bookItem.setItem (obj.titles[0], obj.authors[0], obj.id, obj);
 	}
 
 }

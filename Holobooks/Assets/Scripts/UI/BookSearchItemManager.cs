@@ -10,7 +10,8 @@ public class BookSearchItemManager : MonoBehaviour {
 	public Button downloadBtn;
     public Button sendBtn;
 	public GameObject BookObj;
-	// Use this for initialization
+	private BookReference bookRef;
+
 	void Start () {
 		downloadBtn.onClick.AddListener(DownloadBook);
 	}
@@ -31,12 +32,14 @@ public class BookSearchItemManager : MonoBehaviour {
 
     public void SendBook()
     {
-		SendMessageTester.instance.SendMessages ();
+//		SendBookReferenceManager.instance.SendMessage(
     }
-	public void setItem(string _title, string _author, string _volumeId){
+			
+	public void setItem(string _title, string _author, string _volumeId, BookReference obj){
 		title.text = _title;
 		author.text = _author;
 		volumeId = _volumeId;
+		bookRef = obj;
         sendBtn.onClick.AddListener(SendBook);
     }
 }

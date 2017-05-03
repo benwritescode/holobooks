@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\API\Helpers\Configuration.cs" />
      <Compile Include="Assets\Scripts\API\Helpers\SavWav.cs" />
      <Compile Include="Assets\Scripts\API\Multiplayer\ClientBehavior.cs" />
+     <Compile Include="Assets\Scripts\API\Multiplayer\SendBookReferenceManager.cs" />
      <Compile Include="Assets\Scripts\API\Multiplayer\SendMessageTester.cs" />
      <Compile Include="Assets\Scripts\API\OAuth.cs" />
      <Compile Include="Assets\Scripts\API\Speech\SpeechToText.cs" />
