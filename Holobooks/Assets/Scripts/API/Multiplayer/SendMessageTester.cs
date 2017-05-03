@@ -45,14 +45,18 @@ public class SendMessageTester : MonoBehaviour
 	
 	}
 
-	public void SendMessages(){
-		MessageObject some_object = new MessageObject ();
-		some_object.my_num = 5;
-		some_object.my_message = "Your test worked! Good job";
+	public void SendMessages ()
+	{
 
-		Debug.Log ("Sending message object: " + some_object.ToString ());
+		BookReference myReference = new BookReference ("Ben", "Ben", "Ben");
 
-		string jsonstring = JsonUtility.ToJson (some_object);
+//		MessageObject some_object = new MessageObject ();
+//		some_object.my_num = 5;
+//		some_object.my_message = "Your test worked! Good job";
+
+		Debug.Log ("Sending message object: " + myReference.ToString ());
+
+		string jsonstring = JsonUtility.ToJson (myReference);
 
 		myclientbehavior.SendStringMessage (jsonstring);
 
@@ -68,12 +72,11 @@ public class SendMessageTester : MonoBehaviour
 
 	void ReceivedStringMessage (string message)
 	{
-        menu.SetActive(true);
 		Debug.Log ("attempting to convert json string: " + message);
 		// Convert from JSON back into struct type
-		MessageObject some_object = JsonUtility.FromJson<MessageObject> (message);
+		BookReference myReference = JsonUtility.FromJson<BookReference> (message);
 
-		Debug.Log ("Received message object: " + some_object.ToString ());
+		Debug.Log ("Received message object: " + myReference.ToString ());
 		
 	}
 }

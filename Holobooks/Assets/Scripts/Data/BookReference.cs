@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class BookReference
 {
 	public List<string> titles;
@@ -72,7 +73,7 @@ public class BookReference
 		if (titles.Count > 0)
 			description = titles [0] + ", " + description; 
 
-		return description;
+		return "BookReference:" + description;
 	}
 
 }
