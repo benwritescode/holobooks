@@ -32,7 +32,7 @@ public class BookSearchItemManager : MonoBehaviour {
 
     public void SendBook()
     {
-		SendBookReferenceManager.instance.SendMessage (bookRef);
+		SendBookReferenceManager.instance.SendMessages (bookRef);
     }
 			
 	public void setItem(string _title, string _author, string _volumeId, BookReference obj){
