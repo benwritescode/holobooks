@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ViveRightController
   - ViveLeftController
+  - bookList
   layers:
   - Default
   - TransparentFX

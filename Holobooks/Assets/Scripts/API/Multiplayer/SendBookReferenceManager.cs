@@ -13,6 +13,7 @@ public class SendBookReferenceManager : MonoBehaviour
 	public static SendBookReferenceManager instance;
 	ClientBehavior myclientbehavior;
 	public GameObject menu;
+	public BookSearchResultManager m;
 	void Awake ()
 	{
 		if (instance == null)
@@ -30,12 +31,8 @@ public class SendBookReferenceManager : MonoBehaviour
 
 	public void SendMessages (BookReference obj)
 	{
-
-	
 		Debug.Log ("Sending message object: " + obj.ToString ());
-
 		string jsonstring = JsonUtility.ToJson (obj);
-
 		myclientbehavior.SendStringMessage (jsonstring);
 
 	}
@@ -46,9 +43,7 @@ public class SendBookReferenceManager : MonoBehaviour
 		menu.SetActive (true);
 		Debug.Log ("attempting to convert json string: " + message);
 		BookReference myReference = JsonUtility.FromJson<BookReference> (message);
-		BookSearchResultManager m = menu.GetComponent<BookSearchResultManager> ();
 		m.createSentObj(myReference);
-		Debug.Log ("Received message object: " + myReference.ToString ());
 	}
 
 

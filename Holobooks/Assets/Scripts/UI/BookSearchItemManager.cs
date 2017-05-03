@@ -14,6 +14,7 @@ public class BookSearchItemManager : MonoBehaviour {
 
 	void Start () {
 		downloadBtn.onClick.AddListener(DownloadBook);
+		sendBtn.onClick.AddListener (SendBook);
 	}
 	
 
