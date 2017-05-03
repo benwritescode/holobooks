@@ -31,7 +31,7 @@ public class BookSearchItemManager : MonoBehaviour {
 
     public void SendBook()
     {
-        //send
+		SendMessageTester.instance.SendMessages ();
     }
 	public void setItem(string _title, string _author, string _volumeId){
 		title.text = _title;

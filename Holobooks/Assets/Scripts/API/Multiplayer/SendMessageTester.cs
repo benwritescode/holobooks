@@ -27,9 +27,16 @@ public class MessageObject
 // This class can simply grab the client behavior, register as a delegate, and then start sending and receiving (serialized) JSON strings.
 public class SendMessageTester : MonoBehaviour
 {
-    public GameObject menu;
+	public static SendMessageTester instance;
 	ClientBehavior myclientbehavior;
 
+	void Awake ()
+	{
+		if (instance == null)
+			instance = this;
+		else if (instance != this)
+			return;  
+	}
 	// Use this for initialization
 	void Start ()
 	{
@@ -37,21 +44,25 @@ public class SendMessageTester : MonoBehaviour
 		myclientbehavior.RegisterAsDelegate (this.ReceivedStringMessage);
 	
 	}
-	
+
+	public void SendMessages(){
+		MessageObject some_object = new MessageObject ();
+		some_object.my_num = 5;
+		some_object.my_message = "Your test worked! Good job";
+
+		Debug.Log ("Sending message object: " + some_object.ToString ());
+
+		string jsonstring = JsonUtility.ToJson (some_object);
+
+		myclientbehavior.SendStringMessage (jsonstring);
+
+	}
 	// Update is called once per frame
 	void Update ()
 	{
 
 		if (Input.GetKeyUp ("space")) {
-			MessageObject some_object = new MessageObject ();
-			some_object.my_num = 5;
-			some_object.my_message = "Your test worked! Good job";
-
-			Debug.Log ("Sending message object: " + some_object.ToString ());
-
-			string jsonstring = JsonUtility.ToJson (some_object);
-
-			myclientbehavior.SendStringMessage (jsonstring);
+			
 		}
 	}
 
